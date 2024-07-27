@@ -1,0 +1,18 @@
+
+.background-color-home {
+    background: rgba(13, 10, 11, 0.45);
+}
+
+.home-blog-button {
+    background: linear-gradient(to left, rgba(255, 255, 255, 0.45), rgba(187, 187, 187, 0.45));
+    /* box-shadow: 0px 4px 10px 0px #000000; */
+}
+
+.featured-blog-image {
+    background: linear-gradient(
+      175.36deg, 
+      rgba(0, 0, 0, 0) 3.56%, 
+      rgba(0, 0, 0, 0.210857) 32.63%, 
+      rgba(0, 0, 0, 0.4) 78.8%
+    );
+}

@@ -1,0 +1,45 @@
+---
+
+const companyOptions = [
+    { name: 'Company', url: '' },
+    { name: 'About Us', url: '' },
+    { name: 'Careers', url: '' },
+    { name: 'TRJ Blogs', url: '' },
+]
+
+const policyOptions = [
+    { name: 'Policies', url: '' },
+    { name: 'Privacy Policy', url: '' },
+    { name: 'Terms & Conditions', url: '' },
+    { name: 'Refund Policy', url: '' }
+]
+---
+
+<footer class="w-[100%] px-[16px] py-[36px] bg-[#0D0A0B]">
+    <div class="w-[100%] flex flex-col items-start justify-start gap-y-[24px] xl:gap-y-[28px]">
+        <img alt="The Return Journey Logo" src="https://thereturnjourney.imgix.net/react-webapp/Organisation/logoWhite.webp" class="w-[120px] h-[31px]" />
+        <div class="flex flex-col tab:flex-row justify-start items-start gap-y-[16px] tab:gap-y-[0px] gap-x-[0px] tab:gap-x-[66px] w-[100%]">
+            <div class="flex flex-col items-start justify-start gap-y-[8px]">
+                {
+                    companyOptions.map((item,idx)=>(
+                        <h3 class={`${idx > 0 ? 'Subheadline-Inter-Bold text-[#C1C2C6]' : 'Subheadline-Bold text-white'}`}>{item.name}</h3>
+                    ))
+                }
+            </div>
+
+            <div class="flex flex-col items-start justify-start gap-y-[8px]">
+                {
+                    policyOptions.map((item,idx)=>(
+                        <h3 class={`${idx > 0 ? 'Subheadline-Inter-Bold text-[#C1C2C6]' : 'Subheadline-Bold text-white'}`}>{item.name}</h3>
+                    ))
+                }
+            </div>
+
+            <div class="flex flex-col items-start justify-start gap-y-[8px]">
+                <h3 class="Subheadline-Bold text-white">Contact</h3>
+                <p class="Subheadline-Inter-Bold text-[#C1C2C6]">{'info@thereturnjourney.com'}</p>
+                <p class="Subheadline-Inter-Bold text-[#C1C2C6]">{`910, Gera's Imperium Rise, Hinjewadi Phase II,`}<br/>{`Pune,Maharashtra 411057`}</p>
+            </div>
+        </div>
+    </div>
+</footer>

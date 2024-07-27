@@ -1,0 +1,141 @@
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+
+
+.Large-Title-Bold {
+    font-family: 'Syne', sans-serif;
+    font-size: 36px;
+    font-weight: 600;
+    line-height: 41px;
+    letter-spacing: -0.6299999952316284px;
+    text-align: left;
+}
+
+@media (min-width: 1024px) and (max-width: 1600px) {
+    .Title-1-Bold {
+        font-family: 'Syne', sans-serif;
+        font-size: 30px;
+        font-weight: 600;
+        line-height: 34px;
+        letter-spacing: 0.36399999260902405px;
+        text-align: left;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+    .Title-2-Bold {
+        font-family: 'Syne', sans-serif;
+        font-size: 24px;
+        font-weight: 600;
+        line-height: 28px;
+        letter-spacing: 0.3499999940395355px;
+        text-align: left;
+    }
+}
+
+.Title-3{
+    font-family: 'Inter', sans-serif;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 24px;
+    letter-spacing: 0.3799999952316284px;
+    text-align: left;
+}
+
+@media (min-width: 1024px) and (max-width: 1600px) {
+    .Title-3-Inter-Bold {
+        font-family: 'Inter', sans-serif;
+        font-size: 20px;
+        font-weight: 500;
+        line-height: 24px;
+        letter-spacing: 0.3799999952316284px;
+        text-align: center;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1600px) {
+    .Subheadline {
+        font-family: 'Inter', sans-serif;
+        font-size: 15px;
+        font-weight: 400;
+        line-height: 20px;
+        letter-spacing: -0.23999999463558197px;
+        text-align: left;
+    }
+}
+
+.Subheadline-Bold {
+    font-family: 'Syne', sans-serif;
+    font-size: 17px;
+    font-weight: 600;
+    line-height: 20.4px;
+    letter-spacing: -0.25999999046325684px;
+}
+
+@media (max-width: 768px) {
+    .Subheadline-Inter-Bold{
+        font-family: 'Inter', sans-serif;
+        font-size: 15px;
+        font-weight: 500;
+        line-height: 20px;
+        letter-spacing: -0.23999999463558197px;
+        text-align: left;
+    }
+}
+
+.Caption-1 {
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 16px;
+    text-align: left;
+}
+
+.Caption-1-Bold {
+    font-family: 'Syne', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 16px;
+    text-align: left;
+}
+
+.Footnote-Bold {
+    font-family: 'Syne', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 18px;
+    letter-spacing: -0.07999999821186066px;
+    text-align: left;
+}
+
+@media ( min-width: 768px) and (max-width: 1024px) {
+    .Body-Inter-Bold {
+        font-family: 'Inter', sans-serif;
+        font-size: 17px;
+        font-weight: 500;
+        line-height: 22px;
+        text-align: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .Body-Bold{
+        font-family: 'Syne', sans-serif;
+        font-size: 19px;
+        font-weight: 600;
+        line-height: 22px;
+        letter-spacing: -0.4099999964237213px;
+        text-align: left;
+    }
+}
+
+@media (max-width: 768px) {
+    .Footnote{
+        font-family: 'Inter', sans-serif;
+        font-size: 13px;
+        font-weight: 400;
+        line-height: 18px;
+        letter-spacing: -0.07999999821186066px;
+        text-align: left;
+    }
+}

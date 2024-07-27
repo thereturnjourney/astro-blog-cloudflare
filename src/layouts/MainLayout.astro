@@ -1,0 +1,32 @@
+---
+// Style Sheet
+import '../styles/global.css';
+import '../styles/fontColors.css';
+import '../styles/fonts.css';
+// Components
+import Footer from '../components/Footer.astro';
+import MainHead from './MainHead.astro';
+import Navbar from '../components/Navbar.astro';
+import HomeImage from '../components/HomeImage.astro';
+import FeaturedBlog from '../components/FeaturedBlog.astro';
+
+// interface Props {
+//     title? : String;
+//     description? : String; 
+// }
+
+// const { title = "Example Blog", description = "My test Blog" } = Astro.props as Props
+const { title = "Example Blog", description = "My test Blog" } = Astro.props
+
+---
+
+<html lang="en">
+    <MainHead title={title} description={description} />
+    <HomeImage />
+    <Navbar />
+    <FeaturedBlog />
+	<body>
+		<slot>Default Text</slot>
+	</body>
+    <Footer />
+</html>
