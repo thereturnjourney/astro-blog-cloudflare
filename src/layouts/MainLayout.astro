@@ -10,6 +10,9 @@ import Navbar from '../components/Navbar.astro';
 import HomeImage from '../components/HomeImage.astro';
 import FeaturedBlog from '../components/FeaturedBlog.astro';
 
+const { fetchDashboardBlogs } = await import('../middleware/fetchDashboardBlogs.js');
+const blogsData = await fetchDashboardBlogs();
+// console.log('sdasd: ', blogsData)
 // interface Props {
 //     title? : String;
 //     description? : String; 
@@ -24,7 +27,11 @@ const { title = "Example Blog", description = "My test Blog" } = Astro.props
     <MainHead title={title} description={description} />
     <HomeImage />
     <Navbar />
-    <FeaturedBlog />
+    <div class="absolute xl:top-[154px] flex flex-col items-center justify-center w-[100%]">
+        <h1 class="font-Syne font-semibold text-[36px] leading-[41px] tracking-[-0.63px] text-white">Explore our Travel Blogs here!</h1>
+        <h2 class="mt-[8px] font-Inter font-normal text-[22px] leading-[28px] tracking-[0.35px] text-white">Explore, Dream, Discover: Travel Insights and Guides</h2>
+    </div>
+    <FeaturedBlog blogsData={blogsData} />
 	<body>
 		<slot>Default Text</slot>
 	</body>

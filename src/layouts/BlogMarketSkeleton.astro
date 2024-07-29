@@ -1,0 +1,36 @@
+---
+// import { Image } from 'astro:assets';
+import Blogcard from "../components/BlogCard"
+
+const { fetchDashboardBlogs } = await import('../middleware/fetchDashboardBlogs');
+const blogsData = await fetchDashboardBlogs();
+
+const { featureBlog, data } = blogsData
+// interface Props {
+//     allData: 'Array';
+    // description: string;
+    // dateCreated: string;
+    // imageUrl: string;
+// } as Astro.props
+
+---
+
+<section class="grid grid-cols-1 tab:grid-cols-2 xl:grid-cols-3 gap-4 xl:gap-5">
+    {
+        data.map(({ id, featuredBlog, blogTitle, minRead, author, date, creditsTo, description, bannerImage },idx)=>(
+            <Blogcard 
+                client:visible
+                id={id} 
+                featuredBlog={featuredBlog}
+                blogTitle={blogTitle}
+                minRead={minRead}
+                author={author}
+                date={date}
+                creditsTo={creditsTo}
+                description={description}
+                bannerImage={bannerImage}
+            />
+            // <div/>
+        ))
+    }
+</section>

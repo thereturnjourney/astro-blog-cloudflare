@@ -1,6 +1,8 @@
 ---
-import BlogCard from "../components/BlogCard.astro";
+import BlogMarketSkeleton from "../layouts/BlogMarketSkeleton.astro"
 import MainLayout from "../layouts/MainLayout.astro";
+
+
 
 ---
 
@@ -8,16 +10,10 @@ import MainLayout from "../layouts/MainLayout.astro";
 	<div class="w-[100%] flex flex-row items-start justify-center">
 		<div class="w-[100%] xl:w-[1280px] px-[16px]">
 			<h3 class="mt-[32px] tab:mt-[48px] xl:mt-[56px] Large-Title-Bold text-[#0D0A0B]">Explore the Travel Blogs </h3>
-			<h2 class="mt-[4px] tab:mt-[8px] Title-3 text-[#454955]">Top Recommendations Inspire Your Travels</h2>
+			<h2 class="mt-[4px] tab:mt-[8px] Title-3 text-[#454955]">Top Recommendations to Inspire Your Travels</h2>
 			
 			<div class="flex flex-row justify-center mt-[20px] tab:mt-[32px] pb-[169px] tab:pb-[114px] xl:pb-[200px]">
-				<div class="grid grid-cols-1 tab:grid-cols-2 xl:grid-cols-3 gap-4 xl:gap-5">
-					{
-						[1,2,3,4,5].map((item,idx)=>(
-							<BlogCard />
-						))
-					}
-				</div>
+				<BlogMarketSkeleton />
 			</div>
 		</div>
 	</div>

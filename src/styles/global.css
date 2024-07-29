@@ -16,3 +16,15 @@
       rgba(0, 0, 0, 0.4) 78.8%
     );
 }
+
+.shimmer {
+    animation: shimmering 3.1s linear infinite;
+    background: rgba(226, 226, 226, 1);
+    background: linear-gradient(
+      90deg,
+      rgba(226, 226, 226, 1) 9%,
+      rgba(238, 238, 238, 1) 18%,
+      rgba(226, 226, 226, 1) 31%
+    );
+    background-size: 1300px 100%;
+  }

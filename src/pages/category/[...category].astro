@@ -1,0 +1,25 @@
+---
+import MainLayout from '../../layouts/MainLayout.astro';
+
+// utils
+import { slugify } from '../../functions/helper'
+
+export async function getStaticPaths() {
+    return [
+        {
+            params: { category: slugify("Read more") },
+            props: { name: "Read more" },
+        }
+    ]
+}
+
+const { category } = Astro.params;
+const { name } = Astro.props;
+
+console.log('category: ', category)
+console.log('name: ', name)
+---
+
+<MainLayout title={name}>
+
+</MainLayout>

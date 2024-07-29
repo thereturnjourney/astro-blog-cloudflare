@@ -3,18 +3,15 @@ import { Image } from 'astro:assets';
 import ArrowRight from 'phosphor-astro/ArrowRight.astro';
 import { truncateText } from '../functions/helper';
 
-const options = { year: 'numeric', month: 'long', day: 'numeric' };
-const { fetchDashboardBlogs } = await import('../middleware/fetchDashboardBlogs.js');
-const blogsData = await fetchDashboardBlogs();
-
-
+const { blogsData } = Astro.props
 // Featured Blog Work
-const featureBlogDescription = blogsData.featureBlog.description;
-const truncatedDescription = truncateText(featureBlogDescription, 220);
+const hasIdKey = 'id' in blogsData.featureBlog;
 
-const date = new Date(blogsData.featureBlog.date)
-const dateFinal = date.toLocaleDateString('en-GB', options).toString()
+// const featureBlogDescription = 'id' in blogsData.featureBlog ? blogsData.featureBlog?.description : 'No Description'
+// const truncatedDescription = truncateText(featureBlogDescription, 220);
 
+// const date = ('id' in blogsData.featureBlog) ? new Date(blogsData.featureBlog?.date) : 'Invalid Date'
+// const dateFinal = ('id' in blogsData.featureBlog) ? date.toLocaleDateString('en-GB', options).toString() : 'Invalid Date'
 
 
 // interface Props {
@@ -26,30 +23,33 @@ const dateFinal = date.toLocaleDateString('en-GB', options).toString()
 ---
 
 <div class="w-[100%] flex flex-row items-start justify-center">
-    <div class="w-[100%] xl:w-[1280px] background-color-home absolute bottom-0 hidden:rounded-b-[24px] pt-[16px] xl:pt-[20px] pb-[20px] pr-[16px] tab:pr-[20px] pl-[16px] tab:pl-[20px] xl:pl-[24px] flex flex-col tab:flex-row justify-between items-center">
-        <div class="flex flex-col items-start justify-start xl:w-[570px] tab:w-[420px]">
-            <h3 class="Title-3-Inter-Bold Body-Inter-Bold Subheadline-Inter-Bold pure-white">Featured Blog</h3>
-            <div class="w-[100%] bg-gradient-to-r from-white h-[1px] my-[8px] tab:my-[16px] xl:my-[12px] xl:w-[570px]"/>
-            <h2 class="Title-1-Bold Title-2-Bold Body-Bold pure-white mt-[4px] tab:mt-[0px]">{blogsData.featureBlog.blogTitle}</h2>
-            <p id="featured-blog-date" class="Caption-1 text-[#E9E9E9] mt-[4px]">{dateFinal}</p>
-            <p class="Subheadline Footnote mt-[12px] pure-white">{truncatedDescription}</p>
-            
-            <button class="flex flex-row items-center justify-center px-[16px] py-[8px] mt-[12px] whitespace-nowrap rounded-[12px] border-[1.5px] home-blog-button">
-                <p class="Footnote-Bold pure-white">{'Read more'}</p>
-                <ArrowRight class='h-[20px] ml-[8px]' color='#FFF' weight="regular" />
-            </button>
-        </div>
-        <div class="tab:w-[280px] xl:w-[408px] tab:h-[223px] xl:h-[231px] rounded-[16px] border-2 pure-white mt-[20px] tab:mt-[20px]">
-            <Image 
-                alt="Featured Blog The Return Journey Cover Picture" 
-                src={blogsData.featureBlog.bannerImage[0]} 
-                loading='eager'
-                width={408} 
-                height={201}
-                style="border-radius: 16px;"
-                format='webp'
-                quality={'low'}
-            />
-        </div>
+    {
+            hasIdKey &&
+            <div class="w-[100%] xl:w-[1280px] background-color-home absolute bottom-0 hidden:rounded-b-[24px] pt-[16px] xl:pt-[20px] pb-[20px] pr-[16px] tab:pr-[20px] pl-[16px] tab:pl-[20px] xl:pl-[24px] flex flex-col tab:flex-row justify-between items-center">
+                <div class="flex flex-col items-start justify-start xl:w-[570px] tab:w-[420px]">
+                    <h3 class="Title-3-Inter-Bold Body-Inter-Bold Subheadline-Inter-Bold pure-white">Featured Blog</h3>
+                    <div class="w-[100%] bg-gradient-to-r from-white h-[1px] my-[8px] tab:my-[16px] xl:my-[12px] xl:w-[570px]"/>
+                    <h2 class="Title-1-Bold Title-2-Bold Body-Bold pure-white mt-[4px] tab:mt-[0px]">{blogsData.featureBlog.blogTitle}</h2>
+                    <p id="featured-blog-date" class="Caption-1 text-[#E9E9E9] mt-[4px]">{blogsData.featureBlog.date}</p>
+                    <p class="Subheadline Footnote mt-[12px] pure-white">{blogsData.featureBlog.description}</p>
+                    
+                    <button class="flex flex-row items-center justify-center px-[16px] py-[8px] mt-[12px] whitespace-nowrap rounded-[12px] border-[1.5px] home-blog-button">
+                        <p class="Footnote-Bold pure-white">{'Read more'}</p>
+                        <ArrowRight class='h-[20px] ml-[8px]' color='#FFF' weight="regular" />
+                    </button>
+                </div>
+
+                <div class="tab:w-[280px] xl:w-[408px] tab:h-[223px] xl:h-[231px] rounded-[16px] border-2 pure-white mt-[20px] tab:mt-[20px]">
+                <Image 
+                    alt="Featured Blog The Return Journey Cover Picture" 
+                    src={blogsData.featureBlog.bannerImage[0]} 
+                    loading='eager'
+                    width={408} 
+                    height={201}
+                    style="border-radius: 16px;"
+                    format='webp'
+                    quality={'low'}
+                />
+            </div>
     </div>
 </div>
