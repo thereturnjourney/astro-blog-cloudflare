@@ -4,9 +4,9 @@ import { Drawer, DrawerContent, DrawerDescription, DrawerHeader, DrawerTitle, Dr
 import { extractSubtitles } from "@/functions/helper";
 
 
-export default function DrawerButton(props) {
 
-    const { section } = props
+export default function DrawerButton(props) {
+    const {section} = props
     const subTitles = extractSubtitles(section)
 
 
