@@ -3,11 +3,11 @@ import { Image } from "astro:assets";
 import { imgIXurl } from "../middleware/api";
 
 const Routes = ['Home', 'Itinerary', 'For You', 'Community', 'Horizons']
-// https://thereturnjourney.imgix.net/
+
 ---
 
 <header class="w-[100%] h-[64px] flex flex-row items-center justify-center absolute top-0 z-10">
-    <div class="xl:w-[1280px] w-[100%] bg-white h-[100%] flex flex-row items-center justify-between px-[16px]">
+    <div class={`xl:w-[1280px] w-[100%] bg-white h-[100%] flex flex-row items-center justify-between px-[16px]`}>
         <div class="flex flex-row items-center justify-start h-[100%]">
             <Image
                 src={`${imgIXurl}/react-webapp/Organisation/logo.jpg?lossless=true&w=240&h=62`}

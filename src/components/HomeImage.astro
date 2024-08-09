@@ -1,18 +1,17 @@
 ---
 import Picture from 'astro/components/Picture.astro';
 import { Image } from 'astro:assets';
-import { imgIXurl, s3ImgUrl } from '../middleware/api';
+import { imgIXurl } from '../middleware/api';
 
-import HomeWeb from '../../public/assets/dashboard/Web.webp'
 
 ---
 
 <div class="w-[100%] h-[100vh]">
     <picture>
-        <source srcset={`${s3ImgUrl}AstroJs/Blogs/Home/July-2024-Web.webp?lossless=true&h=800&w=1300`} media="(min-width: 1024px)" />
-        <source srcset={`${s3ImgUrl}AstroJs/Blogs/Home/July-2024-Tab.webp?lossless=true&h=1024&w=768`} media="(min-width: 768px)" />
+        <source srcset={`${imgIXurl}AstroJs/Blogs/Home/July-2024-Web.webp?lossless=true&h=800&w=1300`} media="(min-width: 1024px)" />
+        <source srcset={`${imgIXurl}AstroJs/Blogs/Home/July-2024-Tab.webp?lossless=true&h=1024&w=768`} media="(min-width: 768px)" />
         <img
-            src={`${s3ImgUrl}AstroJs/Blogs/Home/July-2024-Mobile.webp?lossless=true&h=800&w=1300`}
+            src={`${imgIXurl}AstroJs/Blogs/Home/July-2024-Mobile.webp?lossless=true&h=800&w=1300`}
             alt="The Return Journey Blogs Home" 
             loading='eager'
             class="w-[100%] h-[100vh]"

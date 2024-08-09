@@ -2,10 +2,12 @@
 // import { Image } from 'astro:assets';
 import Blogcard from "../components/BlogCard"
 
-const { fetchDashboardBlogs } = await import('../middleware/fetchDashboardBlogs');
-const blogsData = await fetchDashboardBlogs();
+const { fetchAllBlogs } = await import('../middleware/fetchBlogs.js');
+const blogsData = await fetchAllBlogs();
 
-const { featureBlog, data } = blogsData
+// console.log('blogsData: ', blogsData)
+
+// const { featureBlog, data } = blogsData
 // interface Props {
 //     allData: 'Array';
     // description: string;
@@ -15,9 +17,9 @@ const { featureBlog, data } = blogsData
 
 ---
 
-<section class="grid grid-cols-1 tab:grid-cols-2 xl:grid-cols-3 gap-4 xl:gap-5">
+<section class="grid grid-cols-1 tab:grid-cols-2 xl:grid-cols-3 gap-4 xl:gap-[20px]">
     {
-        data.map(({ id, featuredBlog, blogTitle, minRead, author, date, creditsTo, description, bannerImage },idx)=>(
+        blogsData.map(({ id, featuredBlog, blogTitle, minRead, author, date, creditsTo, description, bannerImage },idx)=>(
             <Blogcard 
                 client:visible
                 id={id} 
@@ -30,7 +32,6 @@ const { featureBlog, data } = blogsData
                 description={description}
                 bannerImage={bannerImage}
             />
-            // <div/>
         ))
     }
 </section>

@@ -1,0 +1,31 @@
+---
+import FeaturedBlog from "../components/FeaturedBlog.astro";
+import HomeImage from "../components/HomeImage.astro";
+import MainLayout from "./MainLayout.astro";
+
+const { fetchFeaturedBlogs } = await import('../middleware/fetchBlogs.js');
+const featuredBlogs = await fetchFeaturedBlogs();
+
+interface Props {
+    title: string;
+    description?: string; 
+}
+
+const { title, description } = Astro.props as Props;
+
+---
+
+<MainLayout {title} {description} >
+    <HomeImage />
+    
+    <div class="absolute top-[133px] xl:top-[154px] flex flex-col items-center justify-center w-[100%] text-center">
+        <h1 class="font-Syne font-semibold text-[30px] tab:text-[36px] leading-[34px] tab:leading-[41px] tracking-[0.36px] tab:tracking-[-0.63px] text-white">Explore our Travel <br class="block tab:hidden"/> Blogs here!</h1>
+        <h2 class="mt-[12px] xl:mt-[8px] font-Inter font-normal text-[17px] tab:text-[22px] leading-[22px] tab:leading-[28px] tracking-[0.35px] text-white">Explore, Dream, Discover: <br class="block tab:hidden"/> Travel Insights and Guides</h2>
+    </div>
+
+    <FeaturedBlog featuredBlogs={featuredBlogs} />
+
+    <body>
+		<slot>Default Text</slot>
+	</body>
+</MainLayout>

@@ -1,0 +1,28 @@
+---
+import BlogImage from '../../../components/BlogImage.astro';
+import MainLayout from '../../../layouts/MainLayout.astro';
+import TopicsLayout from '../../../layouts/TopicsLayout.astro';
+import ContentLayout from '../../../layouts/ContentLayout.astro';
+
+import { extractSubtitles } from "../../../functions/helper";
+
+const { blogId, blogName  } = Astro.params;
+
+const { fetchBlogDetail } = await import('../../../middleware/fetchBlogs');
+const blogInfo = await fetchBlogDetail(blogId)
+
+const { id, blogTitle, minRead, author, date, creditsTo, description, bannerImage, section } = blogInfo
+
+const subTitles = extractSubtitles(section)
+---
+
+<MainLayout title={blogName}>
+    <BlogImage cover={bannerImage} />
+    
+    <div class="flex flex-row items-start justify-center tab:mt-[-64px] z-10">
+        <section class="flex flex-row items-start justify-start w-[1280px] gap-x-4 pb-[160px] px-[16px]">
+            <ContentLayout blogInfo={blogInfo} />
+            <TopicsLayout items={subTitles} />
+        </section>
+    </div>
+</MainLayout>

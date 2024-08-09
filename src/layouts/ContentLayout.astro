@@ -1,0 +1,37 @@
+---
+import { Button } from '@/components/ui/button';
+import { renderDetails, formatDate } from '../functions/helper';
+const { blogInfo } = Astro.props as Props;
+
+const { id, blogTitle, minRead, author, date, creditsTo, description, bannerImage, section } = blogInfo
+
+import DrawerButton from "../components/Buttons/DrawerButton";
+
+---
+
+<div class="xl:w-[833px] w-[100%] tab:border tab:border-[#E9E9E9] rounded-[16px] topic-section-shadow bg-white xl:pt-[20px] tab:pt-[24px] pt-3 pb-[90px] tab:px-[24px] flex flex-col items-start justify-start">
+    <div class="w-[100%] flex flex-row items-center justify-between tertiary-black">
+        <p class="font-Inter font-medium text-[13px] tab:text-[15px] leading-[18px] tab:leading-[20px] tracking-[-0.08px] tab:tracking-[-0.24px]">{date}</p>
+        <p class="font-Inter font-medium text-[11px] tab:text-[13px] leading-[13px] tab:leading-[18px] tracking-[0.07px] tab:tracking-[-0.08px]">{minRead}</p>
+    </div>
+
+    <h2 class="night-black font-Syne font-semibold xl:text-[36px] tab:text-[30px] text-[19px] xl:leading-[41px] tab:leading-[34px] leading-[22px] xl:tracking-[-0.63px] tab:tracking-[0.36px] tracking-[-0.41px] mt-2 tab:mt-[20px]">{blogTitle}</h2>
+
+    <h3 class="xl:mt-1 tab:mt-2 mt-1 tertiary-black font-Inter xl:font-normal font-medium text-[13px] tab:text-[15px] leading-[18px] tab:leading-[20px] tracking-[-0.08px] tab:tracking-[-0.24px]">{author}</h3>
+
+    <div class="w-[100%] mt-[24px]">
+    {
+        section.map(({subTitle, details}, idx)=>{
+            return(
+                <div class="w-[100%] flex flex-col items-start justify-start pb-[32px]" >
+                    <h2 class="font-Syne font-semibold xl:text-[24px] tab:text-[22px] text-[17px] leading-[20.4px] tab:leading-[24px] xl:leading-[28px] tracking-[-0.26px] tab:tracking-[0.38px] xl:tracking-[0.35px] night-black">{subTitle}</h2>
+                    <div class="content" set:html={renderDetails(details)}></div>
+                </div>
+            )
+        })
+    }
+    </div>
+
+    <DrawerButton section={section} client:load />
+
+</div>

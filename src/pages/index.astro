@@ -1,20 +1,18 @@
 ---
+import BlogDashboard from "../layouts/BlogDashboard.astro";
 import BlogMarketSkeleton from "../layouts/BlogMarketSkeleton.astro"
-import MainLayout from "../layouts/MainLayout.astro";
-
-
 
 ---
 
-<MainLayout title="About" >
+<BlogDashboard title="Blog Home" description="Library of Travel" >
 	<div class="w-[100%] flex flex-row items-start justify-center">
 		<div class="w-[100%] xl:w-[1280px] px-[16px]">
-			<h3 class="mt-[32px] tab:mt-[48px] xl:mt-[56px] Large-Title-Bold text-[#0D0A0B]">Explore the Travel Blogs </h3>
-			<h2 class="mt-[4px] tab:mt-[8px] Title-3 text-[#454955]">Top Recommendations to Inspire Your Travels</h2>
+			<h3 class="mt-[32px] tab:mt-[48px] xl:mt-[56px] font-Syne font-semibold text-[19px] tab:text-[30px] leading-[22px] tab:leading-[34px] tracking-[-0.41px] tab:tracking-[0.36px] text-[#0D0A0B]">Explore the Travel Blogs </h3>
+			<h2 class="mt-[4px] tab:mt-[8px] font-Inter font-normal text-[13px] tab:text-[20px] leading-[18px] tab:leading-[24px] tracking-[-0.08px] tab:tracking-[0.38px] text-[#454955]">Top Recommendations to Inspire Your Travels</h2>
 			
-			<div class="flex flex-row justify-center mt-[20px] tab:mt-[32px] pb-[169px] tab:pb-[114px] xl:pb-[200px]">
+			<div class="flex flex-row justify-center mt-[20px] tab:mt-[32px] pb-[169px] tab:pb-[114px] xl:pb-[200px] w-[100%]">
 				<BlogMarketSkeleton />
 			</div>
 		</div>
 	</div>
-</MainLayout>
+</BlogDashboard>

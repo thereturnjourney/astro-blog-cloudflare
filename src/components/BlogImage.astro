@@ -1,0 +1,27 @@
+---
+import Picture from 'astro/components/Picture.astro';
+import { Image } from 'astro:assets';
+import { imgIXurl } from '../middleware/api';
+
+interface Props {
+    cover: [];
+}
+
+const { cover } = Astro.props as Props;
+
+console.log('cover: ', cover)
+
+---
+
+<div class="w-[100%]">
+    <picture>
+        <source srcset={`${cover}?lossless=true&h=800&w=1300`} media="(min-width: 1024px)" />
+        <source srcset={`${cover}?lossless=true&h=1024&w=768`} media="(min-width: 768px)" />
+        <img
+            src={`${cover}?lossless=true&h=800&w=1300`}
+            alt="The Return Journey Blogs Home" 
+            loading='eager'
+            class="w-[100%] h-[327px]"
+        />
+    </picture>
+</div>

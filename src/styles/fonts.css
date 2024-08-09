@@ -1,6 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
 
+.font-Syne {
+    font-family: 'Syne', sans-serif;
+}
+
+.font-Inter {
+    font-family: 'Inter', sans-serif;
+}
 
 .Large-Title-Bold {
     font-family: 'Syne', sans-serif;

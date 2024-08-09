@@ -1,0 +1,24 @@
+
+
+export default function Topics(props) {
+
+    const { items } = props
+
+    const TopicComponent = (
+                            <div class="w-[100%] xl:w-[399px] border border-[#E9E9E9] rounded-[16px] topic-section-shadow bg-white py-[24px] flex flex-col items-start justify-start">
+                                <h3 class="ml-[20px] night-black font-Syne font-semibold text-[24px] leading-[28px] tracking-[0.35px]">Topics</h3>
+                                <div class="w-[100%] my-[16px] bg-[#E9E9E9] h-[1px]" />
+                                <div class="grid grid-cols-1 px-[20px] mt-[4px] gap-y-3 w-[100%]">
+                                    {
+                                        items.map(name=>(
+                                            <div class="w-[100%] h-[44px] border border-[#DADDE8] rounded-[8px] flex flex-row items-center justify-start px-[20px]" >{name}</div>
+                                        ))
+                                    }
+                                </div>
+                            </div> 
+                        )
+
+
+    return TopicComponent ;
+
+}
