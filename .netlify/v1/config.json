@@ -1,0 +1,1 @@
+{"images":{"remote_images":["https?://https://thereturnjourney\\.imgix\\.net/.*","https?://https://trj-images-bucket\\.s3\\.us-east-1\\.amazonaws\\.com/.*"]},"headers":[{"for":"/_astro/*","values":{"Cache-Control":"public, max-age=31536000, immutable"}}]}

@@ -2,16 +2,16 @@
 
 const companyOptions = [
     { name: 'Company', url: '' },
-    { name: 'About Us', url: '' },
-    { name: 'Careers', url: '' },
+    { name: 'About Us', url: 'https://www.thereturnjourney.com/aboutus' },
+    // { name: 'Careers', url: '' },
     { name: 'TRJ Blogs', url: '' },
 ]
 
 const policyOptions = [
     { name: 'Policies', url: '' },
-    { name: 'Privacy Policy', url: '' },
-    { name: 'Terms & Conditions', url: '' },
-    { name: 'Refund Policy', url: '' }
+    { name: 'Privacy Policy', url: 'https://www.thereturnjourney.com/privacypolicy' },
+    { name: 'Terms & Conditions', url: 'https://www.thereturnjourney.com/terms' },
+    { name: 'Refund Policy', url: 'https://www.thereturnjourney.com/refund_policy' }
 ]
 ---
 
@@ -22,7 +22,12 @@ const policyOptions = [
             <div class="flex flex-col items-start justify-start gap-y-[8px]">
                 {
                     companyOptions.map((item,idx)=>(
-                        <h3 class={`${idx > 0 ? 'Subheadline-Inter-Bold text-[#C1C2C6]' : 'Subheadline-Bold text-white'}`}>{item.name}</h3>
+                        <a 
+                            key={idx}
+                            href={item.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class={`${idx > 0 ? 'Subheadline-Inter-Bold text-[#C1C2C6]' : 'Subheadline-Bold text-white'}`}>{item.name}</a>
                     ))
                 }
             </div>
@@ -30,7 +35,11 @@ const policyOptions = [
             <div class="flex flex-col items-start justify-start gap-y-[8px]">
                 {
                     policyOptions.map((item,idx)=>(
-                        <h3 class={`${idx > 0 ? 'Subheadline-Inter-Bold text-[#C1C2C6]' : 'Subheadline-Bold text-white'}`}>{item.name}</h3>
+                    <a 
+                        key={idx}
+                        href={item.url}
+                        target="_blank"
+                        rel="noopener noreferrer" class={`${idx > 0 ? 'Subheadline-Inter-Bold text-[#C1C2C6]' : 'Subheadline-Bold text-white'}`}>{item.name}</a>
                     ))
                 }
             </div>
