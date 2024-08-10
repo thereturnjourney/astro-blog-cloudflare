@@ -4,11 +4,19 @@ import { useEffect, useState, useRef } from "react";
 // import { DropdownMenu, DropdownMenuContent, DropdownMenuTrigger } from "./ui/dropdown-menu";
 
 import NavSheet from "../components/NavSheet";
+import { fetchUserInfo } from "@/middleware/user";
 
 const Routes = ["Itinerary", "Horizons"];
 
+function getCookie(name) {
+	const value = `; ${document.cookie}`;
+	const parts = value.split(`; ${name}=`);
+	if (parts.length === 2) return parts.pop().split(';').shift();
+}
+
 export default function Navbar() {
 	const [selectedTab, setSelectedTab] = useState(null);
+	const [getuserinfo, setuserinfo] = useState(null);
 	const containerRef = useRef(null);
 
 	const handleClickOutside = (event) => {
@@ -18,6 +26,21 @@ export default function Navbar() {
 			}
 		}
 	};
+
+	async function getUserData() {
+		const cookieValue = getCookie("trj_tid");
+		const userInfo = await fetchUserInfo(cookieValue);
+		
+		if (userInfo) {
+			setuserinfo(userInfo)
+		} else {
+			console.log('Failed to fetch user information.');
+		}
+	}
+
+	useEffect(()=>{
+		getUserData()
+	},[getuserinfo])
 
 	useEffect(() => {
 		document.addEventListener('mousedown', handleClickOutside);
@@ -38,7 +61,7 @@ export default function Navbar() {
 		<div className="w-[100%] h-[48px] xl:h-[64px] flex flex-row items-center justify-center absolute top-0 z-10">
 			<div
 				ref={containerRef}
-				className={`xl:w-[1280px] w-[100%] bg-white h-[100%] flex flex-row items-center justify-between px-[16px] relative`}
+				className={`xl:w-[1280px] w-[100%] bg-white h-[100%] flex flex-row items-center justify-between px-[16px] relative rounded-b-[12px]`}
 			>
 					<div className="flex flex-row items-center justify-start h-[100%]">
 						{/* <div className="xl:hidden block pr-[20px]">
@@ -46,7 +69,7 @@ export default function Navbar() {
 						</div> */}
 						
 						<div className="xl:hidden block">
-							<NavSheet />
+							<NavSheet getuserinfo={getuserinfo} />
 						</div>
 
 						<div className="cursor-pointer" onClick={() => window.open('https://www.thereturnjourney.com/')}>
