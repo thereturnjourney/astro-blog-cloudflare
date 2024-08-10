@@ -6,6 +6,10 @@
     color: #FFFFFF;
 }
 
+.pure-black {
+    color: #000000;
+}
+
 .tertiary-black {
     color: #454955;
 }
@@ -16,4 +20,8 @@
 
 .ascent-white {
     color: #FCFCFF;
+}
+
+.success-text{
+    color: #4CAF50;
 }
