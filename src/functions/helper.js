@@ -31,7 +31,7 @@ export function extractSubtitles(blogContent) {
 export function renderDetails(details) {
     let titleCount = 0;
 
-    console.log('details: ', details)
+    // console.log('details: ', details)
 
     return details?.map(detail => {
         if (detail.type === 'Title') {
@@ -42,20 +42,20 @@ export function renderDetails(details) {
         } else if (detail.type === 'Image') {
             // Determine the grid column classes based on the number of images
             const imagesLength = detail.images.length;
-            let gridClass = 'grid-cols-1';
+            let gridClass = 'grid-rows-1 tab:grid-cols-1';
             if (imagesLength === 2) {
-                gridClass = 'grid-cols-2';
-            } else if (imagesLength >= 3) {
-                gridClass = 'grid-cols-3';
+                gridClass = 'grid-rows-2 tab:grid-rows-1 tab:grid-cols-2 gap-y-3 tab:gap-y-0';
+            } else if (imagesLength === 3) {
+                gridClass = 'grid-rows-3 tab:grid-rows-1 tab:grid-cols-3 gap-y-3 tab:gap-y-0';
             }
 
             return `<div class="mt-4 grid ${gridClass} gap-x-[16px]">${detail.images.map(image => 
-                `<img src="${image.url}" alt="${image.credit}" />`
+                `<img class="w-[100%] h-[100%]" src="${image.url}" alt="${image.credit}" />`
             ).join('')}<p class="mt-2 tab:mt-3 tertiary-black font-Inter font-normal text-[11px] tab:text-[12px] leading-[13px] tab:leading-[16px]">Credit: ${detail.images[0].credit}</p></div>`;
         } else if (detail.type === 'ExternalLink') {
             return `<Button variant="link" class="flex flex-row w-[100%] items-center justify-between border border-[#E9E9E9] rounded-[8px] mt-[12px]">
                 <div class="w-[76%] tab:w-[90%] h-[100%] pl-[24px] py-3 flex flex-row items-center justify-start" >
-                    <p class="tertiary-black font-Syne font-semibold text-[13px] tab:text-[15px] leading-[13px] tab:leading-[18px] tracking-[0.07px] tab:tracking-[-0.08px]">${detail.text}</p>
+                    <a href="${detail.link}" target="_blank" class="tertiary-black font-Syne font-semibold text-[13px] tab:text-[15px] leading-[13px] tab:leading-[18px] tracking-[0.07px] tab:tracking-[-0.08px]">${detail.text}</a>
                 </div>
                 <div class="w-[24%] tab:w-[10%] h-[100%] pr-[12px] tab:pr-[32px] py-3 justify-end flex-row flex" >
                     <p class="secondary-text font-Syne font-semibold text-[15px] leading-[18px] tracking-[-0.08px]" >View</p>
@@ -66,15 +66,15 @@ export function renderDetails(details) {
     }).join('');
 }
 
-        // else if (detail.type === 'Itinerary'){
-        //     return `<div class="w-[100%] mt-3 flex flex-row items-start justify-start" >
-        //         <div class="w-[75%] flex flex-row py-[8px] pl-[8px] pr-[40px] gap-x-3 justify-start items-center">
-        //             <img src="${image.url}" alt="${image.credit}" />
-        //         </div>
-        //         <div class="w-[25%] flex flex-col">
-        //         </div>
-        //     </div>`
-        // } 
+// else if (detail.type === 'Itinerary'){
+//     return `<div class="w-[100%] mt-3 flex flex-row items-start justify-start" >
+//         <div class="w-[75%] flex flex-row py-[8px] pl-[8px] pr-[40px] gap-x-3 justify-start items-center">
+//             <img src="${image.url}" alt="${image.credit}" />
+//         </div>
+//         <div class="w-[25%] flex flex-col">
+//         </div>
+//     </div>`
+// } 
 
 // function formatDate(dateString) {
 //     const months = [

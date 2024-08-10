@@ -1,18 +1,10 @@
 ---
 import { Image } from 'astro:assets';
-import ArrowRight from 'phosphor-astro/ArrowRight.astro';
 import { truncateText } from '../functions/helper';
 
 const { featuredBlogs } = Astro.props
 // Featured Blog Work
 const hasIdKey = 'id' in featuredBlogs;
-
-// const featureBlogDescription = 'id' in blogsData.featureBlog ? blogsData.featureBlog?.description : 'No Description'
-// const truncatedDescription = truncateText(featureBlogDescription, 220);
-
-// const date = ('id' in blogsData.featureBlog) ? new Date(blogsData.featureBlog?.date) : 'Invalid Date'
-// const dateFinal = ('id' in blogsData.featureBlog) ? date.toLocaleDateString('en-GB', options).toString() : 'Invalid Date'
-
 
 // interface Props {
 //     title: string;
@@ -21,7 +13,7 @@ const hasIdKey = 'id' in featuredBlogs;
 //     imageUrl: string;
 // } as Astro.pro
 
-
+import FeaturedBlogReadMore from '../components/Buttons/FeaturedBlogReadMore';
 
 ---
 
@@ -34,26 +26,20 @@ const hasIdKey = 'id' in featuredBlogs;
                 <div class="w-[85%] bg-gradient-to-r from-white h-[1px] my-[8px] tab:my-[16px] xl:my-[12px] xl:w-[570px]"/>
                 <h2 class="font-Syne font-semibold text-[19px] tab:text-[24px] xl:text-[30px] leading-[22px] tab:leading-[28px] xl:leading-[34px] tracking-[-0.41px] tab:tracking-[0.35px] xl:tracking-[0.36px] pure-white mt-[4px] tab:mt-[0px]">{featuredBlogs.blogTitle}</h2>
                 <p id="featured-blog-date" class="Caption-1 text-[#E9E9E9] mt-[4px]">{featuredBlogs.date}</p>
-                <p class="font-Inter font-normal text-[13px] tab:text-[15px] leading-[18px] tab:leading-[20px] tracking-[-0.08px] tab:tracking-[-0.24px] mt-[12px] pure-white">{featuredBlogs.description}</p>
+                <p class="font-Inter font-normal text-[13px] tab:text-[15px] leading-[18px] tab:leading-[20px] tracking-[-0.08px] tab:tracking-[-0.24px] mt-[12px] pure-white pb-[12px]">{featuredBlogs.description}</p>
                 
-                <button class="flex flex-row items-center justify-center px-[16px] py-[8px] mt-[12px] whitespace-nowrap rounded-[12px] border-[1.5px] home-blog-button">
-                    <p class="Footnote-Bold pure-white">{'Read more'}</p>
-                    <ArrowRight class='h-[20px] ml-[8px]' color='#FFF' weight="regular" />
-                </button>
+                <FeaturedBlogReadMore client:load data={featuredBlogs} />
             </div>
 
-            <div class="w-[100%] tab:w-[280px] xl:w-[408px] h-[144px] tab:h-[223px] xl:h-[231px] rounded-[16px] border-2 pure-white mt-[20px] tab:mt-[20px]">
-                {/* <Image 
+            <div class="w-full tab:w-[280px] xl:w-[408px] h-[144px] tab:h-[223px] xl:h-[231px] rounded-[16px] border-2 pure-white mt-[20px] tab:mt-[20px]">
+                <Image 
                     alt="Featured Blog The Return Journey Cover Picture" 
                     src={featuredBlogs.bannerImage[0]} 
                     loading='eager'
-                    width={268} 
-                    height={144}
-                    style="border-radius: 16px; w-[100%] h-[100%]"
+                    class="rounded-[16px] w-full h-full"
                     format='webp'
-                    quality={'low'}
                     inferSize={true}
-                /> */}
+                />
             </div>
         </div>
     }
