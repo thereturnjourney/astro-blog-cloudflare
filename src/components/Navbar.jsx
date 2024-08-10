@@ -1,7 +1,9 @@
-import { CaretDown } from "@phosphor-icons/react";
+import { CaretDown, List } from "@phosphor-icons/react";
 import { imgIXurl } from "../middleware/api";
 import { useEffect, useState, useRef } from "react";
-import { DropdownMenu, DropdownMenuContent, DropdownMenuTrigger } from "./ui/dropdown-menu";
+// import { DropdownMenu, DropdownMenuContent, DropdownMenuTrigger } from "./ui/dropdown-menu";
+
+import NavSheet from "../components/NavSheet";
 
 const Routes = ["Itinerary", "Horizons"];
 
@@ -33,12 +35,20 @@ export default function Navbar() {
 	}
 
 	return (
-		<div className="w-[100%] h-[64px] flex flex-row items-center justify-center absolute top-0 z-10">
+		<div className="w-[100%] h-[48px] xl:h-[64px] flex flex-row items-center justify-center absolute top-0 z-10">
 			<div
 				ref={containerRef}
 				className={`xl:w-[1280px] w-[100%] bg-white h-[100%] flex flex-row items-center justify-between px-[16px] relative`}
 			>
 					<div className="flex flex-row items-center justify-start h-[100%]">
+						{/* <div className="xl:hidden block pr-[20px]">
+							
+						</div> */}
+						
+						<div className="xl:hidden block">
+							<NavSheet />
+						</div>
+
 						<div className="cursor-pointer" onClick={() => window.open('https://www.thereturnjourney.com/')}>
 							<img
 								src={`${imgIXurl}/react-webapp/Organisation/logo.jpg?lossless=true&w=440&h=122`}
