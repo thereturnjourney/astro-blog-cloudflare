@@ -6,7 +6,7 @@ import '../styles/fonts.css';
 // Components
 import Footer from '../components/Footer.astro';
 import MainHead from './MainHead.astro';
-import Navbar from '../components/Navbar.astro';
+import Navbar from '../components/Navbar';
 
 interface Props {
     title: string;
@@ -19,7 +19,7 @@ const { title, description } = Astro.props as Props;
 
 <html lang="en">
     <MainHead {title} {description} />
-    <Navbar />
+    <Navbar client:visible />
     
 	<body>
 		<slot>Default Text</slot>

@@ -5,7 +5,7 @@
 
 .home-blog-button {
     background: linear-gradient(to left, rgba(255, 255, 255, 0.45), rgba(187, 187, 187, 0.45));
-    /* box-shadow: 0px 4px 10px 0px #000000; */
+    box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.15);
 }
 
 .featured-blog-image {
