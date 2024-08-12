@@ -29,7 +29,7 @@ export default function Blogcard(props) {
 
     return (
         <article 
-            onClick={() => window.open(`/details/${id}/${slugify(blogTitle)}`)} 
+            onClick={() => window.location.href=`/details/${id}/${slugify(blogTitle)}`} 
             className="cursor-pointer flex flex-col items-start justify-start w-[328px] tab:w-[360px] xl:w-[400px] h-[369px] tab:h-[404px] xl:h-[443px] rounded-[12px] tab:rounded-[16px] p-[8px] tab:p-[12px] xl:p-[16px] border border-[#E9E9E9]"
         >
             <div className="w-[100%] h-[178px] tab:h-[215px] xl:h-[224px] rounded-t-[14px]">
