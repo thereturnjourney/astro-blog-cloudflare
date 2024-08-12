@@ -1,4 +1,8 @@
-import { apiEndpoint } from "./api";
+// import { apiEndpoint } from "./api";
+
+// const apiEndpoint = process.env.API_URL
+
+const apiEndpoint = 'https://dev-api.thereturnjourney.com/'
 
 export async function fetchFeaturedBlogs() {
     try {

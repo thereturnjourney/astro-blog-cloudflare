@@ -17,8 +17,6 @@ import { List, PencilSimple } from "@phosphor-icons/react"
 
 export default function NavSheet({getuserinfo}) {
 
-    console.log('dsfdsF: ', getuserinfo)
-
     return (
         <Sheet key={"left"}>
             <SheetTrigger asChild>
