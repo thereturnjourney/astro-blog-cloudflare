@@ -10,6 +10,7 @@ const Routes = ["Itinerary", "Horizons"];
 
 function getCookie(name) {
 	const value = `; ${document.cookie}`;
+	console.log('value: ', value)
 	const parts = value.split(`; ${name}=`);
 	if (parts.length === 2) return parts.pop().split(';').shift();
 }
@@ -28,8 +29,10 @@ export default function Navbar() {
 	};
 
 	async function getUserData() {
-		const cookieValue = getCookie("trj_tid");
-		const userInfo = await fetchUserInfo(cookieValue);
+		const tokenID = getCookie("trj_tid");
+		const userInfo = await fetchUserInfo(tokenID);
+
+		console.log('userInfo: ', userInfo)
 		
 		if (userInfo) {
 			setuserinfo(userInfo)
@@ -72,7 +75,7 @@ export default function Navbar() {
 							<NavSheet getuserinfo={getuserinfo} />
 						</div>
 
-						<div className="cursor-pointer" onClick={() => window.open('https://www.thereturnjourney.com/')}>
+						<div className="cursor-pointer" onClick={() => window.location.href='https://www.thereturnjourney.com/'}>
 							<img
 								src={`${imgIXurl}/react-webapp/Organisation/logo.jpg?lossless=true&w=440&h=122`}
 								alt="The Return Journey Logo"
@@ -141,7 +144,7 @@ export default function Navbar() {
 					<div className="w-[100%] h-[171px] bg-white absolute top-[64px] left-[0px] border-t-[#DADDE8] border border-b-transparent border-x-transparent">
 						<div className="flex flex-row gap-x-[24px] px-[16px] pt-[16px]">
 							<div className="flex flex-col gap-y-1">
-								<div onClick={()=>{window.open('https://www.thereturnjourney.com/itinerary/occasion'); window.scrollTo(0, 0)}} className="w-[205px] h-[92px] px-[16px] pt-[16px] pb-[24px] flex flex-col items-start justify-start gap-y-1 cursor-pointer">
+								<div onClick={()=>{window.location.href='https://www.thereturnjourney.com/itinerary/occasion'; window.scrollTo(0, 0)}} className="w-[205px] h-[92px] px-[16px] pt-[16px] pb-[24px] flex flex-col items-start justify-start gap-y-1 cursor-pointer">
 									<h2 className="pure-black font-Inter font-medium text-[15px] leading-[20px] tracking-[-0.24px]" >Craft New Itinerary</h2>
 									<p className="tertiary-black font-Inter font-normal text-[13px] leading-[18px] tracking-[-0.08px]">Create stunning itineraries<br/>acc. to your preferences</p>
 								</div>
@@ -152,7 +155,7 @@ export default function Navbar() {
 							<div className="w-[1px] h-[40px] bg-[#DADDE8] m-auto" />
 
 							<div className="flex flex-col gap-y-1">
-								<div onClick={()=>{window.open('https://www.thereturnjourney.com/enquiryform'); }} className="w-[205px] h-[92px] px-[16px] pt-[16px] pb-[24px] flex flex-col items-start justify-start gap-y-1 cursor-pointer">
+								<div onClick={()=>{window.location.href='https://www.thereturnjourney.com/enquiryform'; }} className="w-[205px] h-[92px] px-[16px] pt-[16px] pb-[24px] flex flex-col items-start justify-start gap-y-1 cursor-pointer">
 									<h2 className="pure-black font-Inter font-medium text-[15px] leading-[20px] tracking-[-0.24px]" >Submit Inquiry</h2>
 									<p className="tertiary-black font-Inter font-normal text-[13px] leading-[18px] tracking-[-0.08px]">Submit an inquiry for <br/>personalised travel planning</p>
 								</div>
@@ -163,7 +166,7 @@ export default function Navbar() {
 							<div className="w-[1px] h-[40px] bg-[#DADDE8] m-auto" />
 
 							<div className="flex flex-col gap-y-1">
-								<div onClick={()=>{window.open("https://www.thereturnjourney.com/itineraryDashboard/upcomingItineraries"); window.scrollTo(0,0)}} className="w-[205px] h-[92px] px-[16px] pt-[16px] pb-[24px] flex flex-col items-start justify-start gap-y-1 cursor-pointer">
+								<div onClick={()=>{window.location.href="https://www.thereturnjourney.com/itineraryDashboard/upcomingItineraries"; window.scrollTo(0,0)}} className="w-[205px] h-[92px] px-[16px] pt-[16px] pb-[24px] flex flex-col items-start justify-start gap-y-1 cursor-pointer">
 									<h2 className="pure-black font-Inter font-medium text-[15px] leading-[20px] tracking-[-0.24px]" >Upcoming Itineraries</h2>
 									<p className="tertiary-black font-Inter font-normal text-[13px] leading-[18px] tracking-[-0.08px]">Buckle up, your favourite<br/>adventures are nearing!</p>
 								</div>
@@ -172,7 +175,7 @@ export default function Navbar() {
 							<div className="w-[1px] h-[40px] bg-[#DADDE8] m-auto" />
 
 							<div className="flex flex-col gap-y-1">
-								<div onClick={()=>{window.open("https://www.thereturnjourney.com/itineraryDashboard/drafts"); window.scrollTo(0,0)}} className="w-[205px] h-[92px] px-[16px] pt-[16px] pb-[24px] flex flex-col items-start justify-start gap-y-1 cursor-pointer">
+								<div onClick={()=>{window.location.href="https://www.thereturnjourney.com/itineraryDashboard/drafts"; window.scrollTo(0,0)}} className="w-[205px] h-[92px] px-[16px] pt-[16px] pb-[24px] flex flex-col items-start justify-start gap-y-1 cursor-pointer">
 									<h2 className="pure-black font-Inter font-medium text-[15px] leading-[20px] tracking-[-0.24px]" >Drafts</h2>
 									<p className="tertiary-black font-Inter font-normal text-[13px] leading-[18px] tracking-[-0.08px]">Customise what you’ve <br/>already created</p>
 								</div>
@@ -181,7 +184,7 @@ export default function Navbar() {
 							<div className="w-[1px] h-[40px] bg-[#DADDE8] m-auto" />
 
 							<div className="flex flex-col gap-y-1">
-								<div onClick={()=>{window.open("https://www.thereturnjourney.com/itineraryDashboard/completedTrips"); window.scrollTo(0,0)}} className="w-[205px] h-[92px] px-[16px] pt-[16px] pb-[24px] flex flex-col items-start justify-start gap-y-1 cursor-pointer">
+								<div onClick={()=>{window.location.href="https://www.thereturnjourney.com/itineraryDashboard/completedTrips"; window.scrollTo(0,0)}} className="w-[205px] h-[92px] px-[16px] pt-[16px] pb-[24px] flex flex-col items-start justify-start gap-y-1 cursor-pointer">
 									<h2 className="pure-black font-Inter font-medium text-[15px] leading-[20px] tracking-[-0.24px]" >Completed Trips</h2>
 									<p className="tertiary-black font-Inter font-normal text-[13px] leading-[18px] tracking-[-0.08px]">Storehouse of all your<br/>superb memories!</p>
 								</div>
