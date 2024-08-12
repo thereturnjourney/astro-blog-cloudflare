@@ -1,6 +1,11 @@
 import { apiEndpoint } from "./api";
 
-export async function fetchUserInfo(tokenID) {
+// const apiEndpoint = process.env.API_URL
+
+// Assuming `API_URL` is an environment variable defined in Cloudflare Workers or your Astro project
+export async function fetchUserInfo(tokenID, env) {
+    // Dynamically set the API endpoint from the environment variable
+    // const apiEndpoint = env.API_URL || 'https://api.thereturnjourney.com/'; // Default to the dev API if not set
     try {
         const response = await fetch(`${apiEndpoint}users/me`, {
             headers: {
@@ -18,3 +23,4 @@ export async function fetchUserInfo(tokenID) {
         return null;
     }
 }
+

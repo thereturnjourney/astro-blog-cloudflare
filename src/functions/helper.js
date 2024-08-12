@@ -31,8 +31,6 @@ export function extractSubtitles(blogContent) {
 export function renderDetails(details) {
     let titleCount = 0;
 
-    // console.log('details: ', details)
-
     return details?.map(detail => {
         if (detail.type === 'Title') {
             titleCount++;
