@@ -10,7 +10,6 @@ const Routes = ["Itinerary", "Horizons"];
 
 function getCookie(name) {
 	const value = `; ${document.cookie}`;
-	console.log('value: ', value)
 	const parts = value.split(`; ${name}=`);
 	if (parts.length === 2) return parts.pop().split(';').shift();
 }
@@ -31,8 +30,6 @@ export default function Navbar() {
 	async function getUserData() {
 		const tokenID = getCookie("trj_tid");
 		const userInfo = await fetchUserInfo(tokenID);
-
-		console.log('userInfo: ', userInfo)
 		
 		if (userInfo) {
 			setuserinfo(userInfo)
@@ -131,12 +128,20 @@ export default function Navbar() {
 						</div>
 					</div>
 
-					<img
-						src={`${imgIXurl}/react-webapp/Account/dummy.png?lossless=true&w=127&h=127`}
-						alt="The Return Journey Account Profile Picture"
-						loadinwg="eager"
-						className="w-[37px] h-[37px]"
-					/>	
+
+					{
+						getuserinfo &&
+                        getuserinfo.id ?
+						<img
+							src={`${imgIXurl}/react-webapp/Account/dummy.png?lossless=true&w=127&h=127`}
+							alt="The Return Journey Account Profile Picture"
+							loadinwg="eager"
+							className="w-[37px] h-[37px]"
+						/>	:
+						<a className="font-Syne font-semibold text-[16px] leading-[21px] tracking-[-0.32px] night-black">Sign In</a>
+					}
+
+					
 
 					{
 					Routes.includes(selectedTab) &&

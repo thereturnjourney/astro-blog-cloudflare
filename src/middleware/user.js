@@ -1,7 +1,13 @@
-import { apiEndpoint } from "./api";
+// import { apiEndpoint } from "./api";
+
+// const apiEndpoint = process.env.API_URL
+
+
+const apiEndpoint = 'https://dev-api.thereturnjourney.com/'
 
 export async function fetchUserInfo(tokenID) {
-    console.log('tokenID: ', tokenID)
+    console.log('process: ', process.env)
+
     try {
         const response = await fetch(`${apiEndpoint}users/me`, {
             headers: {
