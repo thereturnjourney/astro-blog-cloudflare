@@ -1,6 +1,7 @@
 import { apiEndpoint } from "./api";
 
 export async function fetchUserInfo(tokenID) {
+    console.log('tokenID: ', tokenID)
     try {
         const response = await fetch(`${apiEndpoint}users/me`, {
             headers: {
