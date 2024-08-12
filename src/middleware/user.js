@@ -6,7 +6,7 @@
 const apiEndpoint = 'https://dev-api.thereturnjourney.com/'
 
 export async function fetchUserInfo(tokenID) {
-    console.log('process: ', process.env)
+    console.log('process: ', env.API_URL)
 
     try {
         const response = await fetch(`${apiEndpoint}users/me`, {
