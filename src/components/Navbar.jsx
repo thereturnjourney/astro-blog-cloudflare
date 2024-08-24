@@ -91,14 +91,14 @@ export default function Navbar() {
 								{"Home"}
 							</a>
 							
-								<span
-									aria-label={`Navbar Itinerary Route`}
-									className="Caption-1-Bold night-black flex flex-row relative pr-5 cursor-pointer"
-									onClick={() => chekAndset('Itinerary')}
-								>
-									{"Itinerary"}
-									<CaretDown weight="regular" size={16} className={`absolute right-0 ${ selectedTab === 'Itinerary' ? 'rotate-0 text-[#FF5903]' : 'rotate-180 text-[#454955]' }`} />
-								</span>
+							<span
+								aria-label={`Navbar Itinerary Route`}
+								className="Caption-1-Bold night-black flex flex-row relative pr-5 cursor-pointer"
+								onClick={() => chekAndset('Itinerary')}
+							>
+								{"Itinerary"}
+								<CaretDown weight="regular" size={16} className={`absolute right-0 ${ selectedTab === 'Itinerary' ? 'rotate-0 text-[#FF5903]' : 'rotate-180 text-[#454955]' }`} />
+							</span>
 
 							<a
 								href={"https://www.thereturnjourney.com/foryou"}
@@ -140,7 +140,6 @@ export default function Navbar() {
 						/>	:
 						<a className="font-Syne font-semibold text-[16px] leading-[21px] tracking-[-0.32px] night-black">Sign In</a>
 					}
-
 					
 
 					{
