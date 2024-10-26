@@ -18,6 +18,7 @@ export default function Navbar() {
 	const [selectedTab, setSelectedTab] = useState(null);
 	const [getuserinfo, setuserinfo] = useState(null);
 	const containerRef = useRef(null);
+	const itneraryCardRef = useRef(null);
 
 	const handleClickOutside = (event) => {
 		if (containerRef.current && !containerRef.current.contains(event.target)) {
@@ -48,6 +49,21 @@ export default function Navbar() {
 			document.removeEventListener('mousedown', handleClickOutside);
 		};
 	}, [selectedTab]);
+
+	useEffect(() => {
+		const handleOutsideClick = (event) => {
+            if (
+                itneraryCardRef.current && !itneraryCardRef.current.contains(event.target)
+            ) {
+                setSelectedTab(null)
+            }
+        }
+
+        document.addEventListener('mousedown', handleOutsideClick);
+        return () => {
+            document.removeEventListener('mousedown', handleOutsideClick);
+        };
+	}, [])
 
 	function chekAndset(selected) {
 		if (selectedTab === selected){
@@ -146,7 +162,7 @@ export default function Navbar() {
 					{
 					Routes.includes(selectedTab) &&
 					selectedTab === 'Itinerary' ? 
-					<div className="w-[100%] h-[171px] bg-white absolute top-[64px] left-[0px] border-t-[#DADDE8] border border-b-transparent border-x-transparent">
+					<div ref={itneraryCardRef} className="w-[100%] h-[171px] bg-white absolute top-[64px] left-[0px] border-t-[#DADDE8] border border-b-transparent border-x-transparent">
 						<div className="flex flex-row gap-x-[24px] px-[16px] pt-[16px]">
 							<div className="flex flex-col gap-y-1">
 								<div onClick={()=>{window.location.href='https://www.thereturnjourney.com/itinerary/occasion'; window.scrollTo(0, 0)}} className="w-[205px] h-[92px] px-[16px] pt-[16px] pb-[24px] flex flex-col items-start justify-start gap-y-1 cursor-pointer">
