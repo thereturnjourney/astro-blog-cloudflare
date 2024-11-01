@@ -12,6 +12,7 @@ import { List } from "@phosphor-icons/react"
 
 const TRJ_URL = import.meta.env.PUBLIC_TRJ_URL
 const BLOG_URL = import.meta.env.PUBLIC_BLOG_URL
+const NEW_DASHBOARD = import.meta.env.PUBLIC_NEW_DASHBOARD
 
 export default function NavSheet({getuserinfo}) {
 
@@ -64,7 +65,7 @@ export default function NavSheet({getuserinfo}) {
                     
 
                     <div className="w-[100%] flex flex-col items-start justify-start gap-y-4 mt-[32px]">
-                    <span onClick={()=> redirectTo(TRJ_URL)} className="night-black font-Syne font-semibold text-[15px] leading-[18px] tracking-[-0.08px]">
+                        <span onClick={()=> redirectTo(NEW_DASHBOARD)} className="night-black font-Syne font-semibold text-[15px] leading-[18px] tracking-[-0.08px]">
                             Home
                         </span>
                         <div className="bg-[#E9E9E9] w-[100%] h-[1px]" />
