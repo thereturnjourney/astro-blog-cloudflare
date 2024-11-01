@@ -11,6 +11,7 @@ import CircularProgress from "./CircularProgress";
 const Routes = ["Itinerary", "Horizons"];
 const TRJ_URL = import.meta.env.PUBLIC_TRJ_URL
 const BLOG_URL = import.meta.env.PUBLIC_BLOG_URL
+const NEW_DASHBOARD = import.meta.env.PUBLIC_NEW_DASHBOARD
 
 function getCookie(name) {
 	const value = `; ${document.cookie}`;
@@ -95,7 +96,7 @@ export default function Navbar() {
 							<NavSheet getuserinfo={getuserinfo} />
 						</div>
 
-						<div className="cursor-pointer" onClick={() => redirectTo(TRJ_URL)}>
+						<div className="cursor-pointer" onClick={() => redirectTo(NEW_DASHBOARD)}>
 							<img
 								src={`${imgIXurl}/react-webapp/Organisation/logo.jpg?lossless=true&w=440&h=122`}
 								alt="The Return Journey Logo"
@@ -107,7 +108,7 @@ export default function Navbar() {
 						<div  className="xl:flex hidden flex-row items-center justify-start xl:gap-x-[24px] xl:ml-[24px]">
 							<span
 								key={"Home"}
-								onClick={() => redirectTo(TRJ_URL)}
+								onClick={() => redirectTo(NEW_DASHBOARD)}
 								aria-label={`Navbar Home Route`}
 								className="Caption-1-Bold night-black"
 							>
