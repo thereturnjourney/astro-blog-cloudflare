@@ -4,6 +4,11 @@
   "version": "0.0.1",
   "scripts": {
     "dev": "astro dev",
+    "dev:staging": "env-cmd -f .env.staging astro dev",
+    "dev:production": "env-cmd -f .env.production astro dev",
+    "build:development": "env-cmd -f .env.development astro build",
+    "build:staging": "env-cmd -f .env.staging astro build",
+    "build:production": "env-cmd -f .env.production astro build",
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",

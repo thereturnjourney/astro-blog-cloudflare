@@ -1,19 +1,17 @@
 import { Button } from "@/components/ui/button"
 import {
   Sheet,
-  SheetClose,
   SheetContent,
-  SheetDescription,
-  SheetFooter,
-  SheetHeader,
-  SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet"
 
 import { truncateText } from "@/functions/helper"
 import { imgIXurl } from "@/middleware/api"
-import { List, PencilSimple } from "@phosphor-icons/react"
+import { List } from "@phosphor-icons/react"
 
+
+const TRJ_URL = import.meta.env.PUBLIC_TRJ_URL
+const BLOG_URL = import.meta.env.PUBLIC_BLOG_URL
 
 export default function NavSheet({getuserinfo}) {
 
@@ -66,19 +64,34 @@ export default function NavSheet({getuserinfo}) {
                     
 
                     <div className="w-[100%] flex flex-col items-start justify-start gap-y-4 mt-[32px]">
-                        <a href="https://www.thereturnjourney.com/" className="night-black font-Syne font-semibold text-[15px] leading-[18px] tracking-[-0.08px]">Home</a>
+                    <span onClick={()=> redirectTo(TRJ_URL)} className="night-black font-Syne font-semibold text-[15px] leading-[18px] tracking-[-0.08px]">
+                            Home
+                        </span>
                         <div className="bg-[#E9E9E9] w-[100%] h-[1px]" />
 
-                        <a href="https://www.thereturnjourney.com/enquiryform" className="night-black font-Syne font-semibold text-[15px] leading-[18px] tracking-[-0.08px] mt-1">Itinerary Enquiry</a>
+                        <span onClick={()=> redirectTo(`${TRJ_URL}/enquiryform`)} className="night-black font-Syne font-semibold text-[15px] leading-[18px] tracking-[-0.08px] mt-1">
+                            Itinerary Enquiry
+                        </span>
                         <div className="bg-[#E9E9E9] w-[100%] h-[1px]" />
 
-                        <a href="https://www.thereturnjourney.com/foryou" className="night-black font-Syne font-semibold text-[15px] leading-[18px] tracking-[-0.08px] mt-1">For You</a>
+                        <span onClick={()=> redirectTo(`${TRJ_URL}/foryou`)} className="night-black font-Syne font-semibold text-[15px] leading-[18px] tracking-[-0.08px] mt-1">
+                            For You
+                        </span>
                         <div className="bg-[#E9E9E9] w-[100%] h-[1px]" />
 
-                        <a href="https://www.thereturnjourney.com/aboutus" className="night-black font-Syne font-semibold text-[15px] leading-[18px] tracking-[-0.08px] mt-1">About</a>
+                        <span onClick={()=> redirectTo(`${TRJ_URL}/aboutus`)} className="night-black font-Syne font-semibold text-[15px] leading-[18px] tracking-[-0.08px] mt-1">
+                            About
+                        </span>
                         <div className="bg-[#E9E9E9] w-[100%] h-[1px]" />
 
-                        <a href='/' className="night-black font-Syne font-semibold text-[15px] leading-[18px] tracking-[-0.08px] mt-1">Blogs</a>
+                        <span onClick={()=> redirectTo(BLOG_URL)} className="night-black font-Syne font-semibold text-[15px] leading-[18px] tracking-[-0.08px] mt-1">
+                            Blogs
+                        </span>
+                        
+                        <div className="bg-[#E9E9E9] w-[100%] h-[1px]" />
+                        <span onClick={()=> redirectTo(`${TRJ_URL}/vendor/dashboard`)} className="night-black font-Syne font-semibold text-[15px] leading-[18px] tracking-[-0.08px] mt-1">
+                            Become a Supplier
+                        </span>
                     </div>
                 </div>
             </SheetContent>
