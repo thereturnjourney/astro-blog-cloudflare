@@ -25,7 +25,6 @@ export default function Blogcard(props) {
         return () => window.removeEventListener('resize', handleResize); // Cleanup listener on unmount
     }, []);
 
-    const truncatedDescription = truncateText(description, truncateLength);
 
     return (
         <article 
@@ -48,8 +47,8 @@ export default function Blogcard(props) {
 
             <h3 className="text-[#0D0A0B] font-Syne font-semibold tab:text-[17px] tab:leading-[20.4px] tab:tracking-[-0.26px] mt-[8px]">{blogTitle}</h3>
 
-            <p className="text-[#454955] font-Inter font-normal tab:text-[13px] tab:leading-[18px] tab:tracking-[-0.08px] mt-[8px]">
-                {truncatedDescription}
+            <p className="text-[#454955] font-Inter font-normal tab:text-[13px] tab:leading-[18px] tab:tracking-[-0.08px] mt-[8px] line-clamp-3">
+                {description}
             </p>
             
             <div className="w-[100%] flex flex-row justify-end mt-[12px]">

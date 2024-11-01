@@ -1,12 +1,8 @@
-import { apiEndpoint } from "./api";
-
-// const apiEndpoint = process.env.API_URL
-
-// const apiEndpoint = 'https://dev-api.thereturnjourney.com/'
+const TRJ_API_URL = import.meta.env.PUBLIC_TRJ_API_URL
 
 export async function fetchFeaturedBlogs() {
     try {
-    	const response = await fetch(`${apiEndpoint}getFeaturedBlogs`);
+    	const response = await fetch(`${TRJ_API_URL}/getFeaturedBlogs`);
         const data = await response.json();
         return data;
     } catch (error) {
@@ -16,7 +12,7 @@ export async function fetchFeaturedBlogs() {
 
 export async function fetchAllBlogs() {
     try {
-    	const response = await fetch(`${apiEndpoint}getallBlogs`);
+    	const response = await fetch(`${TRJ_API_URL}/getallBlogs`);
         const data = await response.json();
         return data;
     } catch (error) {
@@ -26,7 +22,7 @@ export async function fetchAllBlogs() {
 
 export async function fetchBlogDetail(id) {
     try {
-    	const response = await fetch(`${apiEndpoint}getBlog/${id}`);
+    	const response = await fetch(`${TRJ_API_URL}/getBlog/${id}`);
         const data = await response.json();
         return data;
     } catch (error) {
