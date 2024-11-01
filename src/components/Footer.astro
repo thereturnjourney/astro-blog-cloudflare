@@ -1,17 +1,19 @@
 ---
+// CONSTANT VARIABLE
+const TRJ_URL = import.meta.env.PUBLIC_TRJ_URL
+const BLOG_URL = import.meta.env.PUBLIC_BLOG_URL
 
 const companyOptions = [
     { name: 'Company', url: '' },
-    { name: 'About Us', url: 'https://www.thereturnjourney.com/aboutus' },
-    // { name: 'Careers', url: '' },
+    { name: 'About Us', url: `${TRJ_URL}/aboutus` },
     { name: 'TRJ Blogs', url: '/' },
 ]
 
 const policyOptions = [
     { name: 'Policies', url: '' },
-    { name: 'Privacy Policy', url: 'https://www.thereturnjourney.com/privacypolicy' },
-    { name: 'Terms & Conditions', url: 'https://www.thereturnjourney.com/terms' },
-    { name: 'Refund Policy', url: 'https://www.thereturnjourney.com/refund_policy' }
+    { name: 'Privacy Policy', url: `${TRJ_URL}/privacypolicy` },
+    { name: 'Terms & Conditions', url: `${TRJ_URL}/terms` },
+    { name: 'Refund Policy', url: `${TRJ_URL}/refund_policy` }
 ]
 ---
 
@@ -21,7 +23,7 @@ const policyOptions = [
         <div class="flex flex-col tab:flex-row justify-start items-start gap-y-[16px] tab:gap-y-[0px] gap-x-[0px] tab:gap-x-[66px] w-[100%]">
             <div class="flex flex-col items-start justify-start gap-y-[8px]">
                 {
-                    companyOptions.map((item,idx)=>(
+                    companyOptions?.map((item,idx)=>(
                         <a 
                             key={idx}
                             href={item.url}
