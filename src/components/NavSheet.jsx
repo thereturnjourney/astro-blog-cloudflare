@@ -15,7 +15,11 @@ const BLOG_URL = import.meta.env.PUBLIC_BLOG_URL
 const NEW_DASHBOARD = import.meta.env.PUBLIC_NEW_DASHBOARD
 
 export default function NavSheet({getuserinfo}) {
-
+    const redirectTo = (url) => {
+		window.scrollTo(0, 0);
+		window.location.href = url;
+	} 
+    
     return (
         <Sheet key={"left"}>
             <SheetTrigger asChild>
