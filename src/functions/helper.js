@@ -49,7 +49,7 @@ export function renderDetails(details) {
 
             return `<div class="mt-4 grid ${gridClass} gap-x-[16px]">${detail.images.map(image => 
                 `<img class="w-[100%] h-[100%]" src="${image.url}" alt="${image.credit}" />`
-            ).join('')}<p class="mt-2 tab:mt-3 tertiary-black font-Inter font-normal text-[11px] tab:text-[12px] leading-[13px] tab:leading-[16px]">Credit: ${detail.images[0].credit}</p></div>`;
+            ).join('')} ${detail.images[0].credit ? `<p class="mt-2 tab:mt-3 tertiary-black font-Inter font-normal text-[11px] tab:text-[12px] leading-[13px] tab:leading-[16px]">Credit: ${detail.images[0].credit}</p>` : ''}</div>`;
         } else if (detail.type === 'ExternalLink') {
             return `<Button variant="link" class="flex flex-row w-[100%] items-center justify-between border border-[#E9E9E9] rounded-[8px] mt-[12px]">
                 <div class="w-[76%] tab:w-[90%] h-[100%] pl-[24px] py-3 flex flex-row items-center justify-start" >
@@ -64,39 +64,13 @@ export function renderDetails(details) {
     }).join('');
 }
 
-// else if (detail.type === 'Itinerary'){
-//     return `<div class="w-[100%] mt-3 flex flex-row items-start justify-start" >
-//         <div class="w-[75%] flex flex-row py-[8px] pl-[8px] pr-[40px] gap-x-3 justify-start items-center">
-//             <img src="${image.url}" alt="${image.credit}" />
-//         </div>
-//         <div class="w-[25%] flex flex-col">
-//         </div>
-//     </div>`
-// } 
 
-// function formatDate(dateString) {
-//     const months = [
-//         'January', 'February', 'March', 'April', 'May', 'June', 
-//         'July', 'August', 'September', 'October', 'November', 'December'
-//     ];
+export const getCookie = (name) =>  {
+	const value = `; ${document.cookie}`;
+	const parts = value.split(`; ${name}=`);
+	if (parts.length === 2) return parts.pop().split(';').shift();
+}
 
-//     // Validate the input format using a regular expression
-//     const datePattern = /^\d{4}-\d{2}-\d{2}$/;
-//     if (!datePattern.test(dateString)) {
-//         throw new Error('Invalid date format. Please use yyyy-mm-dd format.');
-//     }
-
-//     const [year, month, day] = dateString.split('-');
-
-//     // Validate the date values
-//     const monthIndex = parseInt(month, 10) - 1;
-//     if (monthIndex < 0 || monthIndex > 11) {
-//         throw new Error('Invalid month value.');
-//     }
-//     if (parseInt(day, 10) < 1 || parseInt(day, 10) > 31) {
-//         throw new Error('Invalid day value.');
-//     }
-
-//     const monthName = months[monthIndex];
-//     return `${parseInt(day, 10)} ${monthName} ${year}`;
-// }
+export const removeCookie = (name) =>  {
+    document.cookie = `${name}=; max-age=0; path=/;`;
+}
