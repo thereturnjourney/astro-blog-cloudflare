@@ -29,27 +29,31 @@ const policyOptions = [
                             href={item.url}
                             target="_blank"
                             rel="noopener noreferrer"
-                            class={`${idx > 0 ? 'Subheadline-Inter-Bold text-[#C1C2C6]' : 'Subheadline-Bold text-white'}`}>{item.name}</a>
+                            class={`${idx > 0 ? 'Subheadline-Inter-Bold text-[#C1C2C6]' : 'Subheadline-Bold text-white'} hover:text-[#FFFFFF]`}>{item.name}</a>
                     ))
                 }
             </div>
 
-            <div class="flex flex-col items-start justify-start gap-y-[8px]">
+            <div class="flex flex-col items-start justify-start gap-y-[8px] hover:text-[#FFFFFF]">
                 {
                     policyOptions.map((item,idx)=>(
                     <a 
                         key={idx}
                         href={item.url}
                         target="_blank"
-                        rel="noopener noreferrer" class={`${idx > 0 ? 'Subheadline-Inter-Bold text-[#C1C2C6]' : 'Subheadline-Bold text-white'}`}>{item.name}</a>
+                        rel="noopener noreferrer" class={`${idx > 0 ? 'Subheadline-Inter-Bold text-[#C1C2C6]' : 'Subheadline-Bold text-white'} hover:text-[#FFFFFF]`}>{item.name}</a>
                     ))
                 }
             </div>
 
             <div class="flex flex-col items-start justify-start gap-y-[8px]">
                 <h3 class="Subheadline-Bold text-white">Contact</h3>
-                <p class="Subheadline-Inter-Bold text-[#C1C2C6]">{'info@thereturnjourney.com'}</p>
-                <p class="Subheadline-Inter-Bold text-[#C1C2C6]">{`910, Gera's Imperium Rise, Hinjewadi Phase II,`}<br/>{`Pune,Maharashtra 411057`}</p>
+                <a href='mailto:info@thereturnjourney.com' target="_blank" class="Subheadline-Inter-Bold text-[#C1C2C6] hover:text-[#FFFFFF]">
+                    {'info@thereturnjourney.com'}
+                </a>
+                <a href="https://www.google.com/maps/dir/?api=1&destination=18.596462484229175, 73.71762121101115" target="_blank" class="Subheadline-Inter-Bold text-[#C1C2C6] hover:text-[#FFFFFF]">
+                    {`910, Gera's Imperium Rise, Hinjewadi Phase II,`}<br/>{`Pune,Maharashtra 411057`}
+                </a>
             </div>
         </div>
     </div>

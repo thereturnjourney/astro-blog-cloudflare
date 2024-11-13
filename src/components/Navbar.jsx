@@ -7,32 +7,27 @@ import NavSheet from "../components/NavSheet";
 import { fetchUserInfo } from "@/middleware/user";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuTrigger } from "./ui/dropdown-menu";
 import CircularProgress from "./CircularProgress";
+import { getCookie, removeCookie } from "@/functions/helper";
 
 const Routes = ["Itinerary", "Horizons"];
 const TRJ_URL = import.meta.env.PUBLIC_TRJ_URL
 const BLOG_URL = import.meta.env.PUBLIC_BLOG_URL
 const NEW_DASHBOARD = import.meta.env.PUBLIC_NEW_DASHBOARD
 
-function getCookie(name) {
-	const value = `; ${document.cookie}`;
-	const parts = value.split(`; ${name}=`);
-	if (parts.length === 2) return parts.pop().split(';').shift();
-}
-
-function removeCookie(name) {
-    document.cookie = `${name}=; max-age=0; path=/;`;
-}
-
 export default function Navbar() {
 	const [selectedTab, setSelectedTab] = useState(null);
 	const [getuserinfo, setuserinfo] = useState(null);
 	const [userCompletion, setUserCompletion] = useState(0);
 	const [userFullName, setUserFullName] = useState("Himanshu Phalak")
-	const containerRef = useRef(null);
+	const dropDownRef = useRef(null);
+	const navBarRef = useRef(null);
 	const tokenID = getCookie("trj_tid");
 
 	const handleClickOutside = (event) => {
-		if (containerRef.current && !containerRef.current.contains(event.target)) {
+		if (
+			(dropDownRef.current && !dropDownRef.current.contains(event.target)) &&
+			(navBarRef.current && !navBarRef.current.contains(event.target))
+		) {
 			if (selectedTab) {
 				setSelectedTab(null);
 			}
@@ -85,6 +80,7 @@ export default function Navbar() {
 	return (
 		<div className="fixed top-[0px] left-[auto] w-[100%] h-[48px] xl:h-[64px] flex flex-row items-center justify-center z-10">
 			<div
+				ref={navBarRef}
 				className={`xl:w-[1280px] w-[100%] bg-white h-[100%] flex flex-row items-center justify-between px-[16px] relative rounded-b-[12px] border border-[#E9E9E9]`}
 			>
 					<div className="flex flex-row items-center justify-start h-[100%]">
@@ -116,7 +112,6 @@ export default function Navbar() {
 							</span>
 							
 							<span
-								ref={containerRef}
 								aria-label={`Navbar Itinerary Route`}
 								className="Caption-1-Bold night-black flex flex-row gap-[4px] relative cursor-pointer"
 								onClick={() => chekAndset('Itinerary')}
@@ -143,7 +138,7 @@ export default function Navbar() {
 							</p>
 
 							<div
-								ref={containerRef}
+								ref={dropDownRef}
 								aria-label={`Navbar Horizons Route`}
 								className="Caption-1-Bold night-black flex flex-row relative gap-[4px] cursor-pointer"
 								onClick={() => chekAndset('Horizons')}
@@ -295,7 +290,7 @@ export default function Navbar() {
 					{
 						Routes.includes(selectedTab) &&
 						selectedTab === 'Itinerary' ? 
-						<div className="w-[100%] h-[171px] bg-white absolute top-[110%] left-[0px] border-t-[#DADDE8] border border-b-transparent border-x-transparent xl:rounded-[16px]">
+						<div ref={dropDownRef} className="w-[100%] h-[171px] bg-white absolute top-[110%] left-[0px] border-t-[#DADDE8] border border-b-transparent border-x-transparent xl:rounded-[16px]">
 							<div className="flex flex-row gap-x-[24px] px-[16px] pt-[16px]">
 								<div className="flex flex-col gap-y-1">
 									<div onClick={() => redirectTo(`${TRJ_URL}/itinerary/occasion`)} className="w-[205px] h-[92px] px-[16px] pt-[16px] pb-[24px] flex flex-col items-start justify-start gap-y-1 cursor-pointer rounded-[16px] hover:bg-[#FFF0E9]">
@@ -306,7 +301,7 @@ export default function Navbar() {
 									<h3 className="success-text font-Inter font-medium text-[13px] leading-[18px] tracking-[-0.08px] ml-[16px] whitespace-nowrap">Himachal Pradesh</h3>
 								</div>
 								
-								<div className="w-[1px] h-[40px] bg-[#DADDE8] m-auto" />
+								<div className="w-[1px] h-[40px] bg-[#DADDE8] mt-[28px]" />
 
 								<div className="flex flex-col gap-y-1">
 									<div onClick={() => redirectTo(`${TRJ_URL}/enquiryform`)}  className="w-[205px] h-[92px] px-[16px] pt-[16px] pb-[24px] flex flex-col items-start justify-start gap-y-1 cursor-pointer rounded-[16px] hover:bg-[#FFF0E9]">
@@ -317,7 +312,7 @@ export default function Navbar() {
 									<h3 className="success-text font-Inter font-medium text-[13px] leading-[18px] tracking-[-0.08px] ml-[16px] whitespace-nowrap">All Other States</h3>
 								</div>
 
-								<div className="w-[1px] h-[40px] bg-[#DADDE8] m-auto" />
+								<div className="w-[1px] h-[40px] bg-[#DADDE8] mt-[28px]" />
 
 								<div className="flex flex-col gap-y-1">
 									<div onClick={() => redirectTo(`${TRJ_URL}/itineraryDashboard/upcomingItineraries`)} className="w-[205px] h-[92px] px-[16px] pt-[16px] pb-[24px] flex flex-col items-start justify-start gap-y-1 cursor-pointer rounded-[16px] hover:bg-[#FFF0E9]">
@@ -326,7 +321,7 @@ export default function Navbar() {
 									</div>
 								</div>
 
-								<div className="w-[1px] h-[40px] bg-[#DADDE8] m-auto" />
+								<div className="w-[1px] h-[40px] bg-[#DADDE8] mt-[28px]" />
 
 								<div className="flex flex-col gap-y-1">
 									<div onClick={() => redirectTo(`${TRJ_URL}/itineraryDashboard/itineraryDashboard/drafts`)}  className="w-[205px] h-[92px] px-[16px] pt-[16px] pb-[24px] flex flex-col items-start justify-start gap-y-1 cursor-pointer rounded-[16px] hover:bg-[#FFF0E9]">
@@ -335,7 +330,7 @@ export default function Navbar() {
 									</div>
 								</div>
 
-								<div className="w-[1px] h-[40px] bg-[#DADDE8] m-auto" />
+								<div className="w-[1px] h-[40px] bg-[#DADDE8] mt-[28px]" />
 
 								<div className="flex flex-col gap-y-1">
 									<div onClick={() => redirectTo(`${TRJ_URL}/itineraryDashboard/completedTrips`)}  className="w-[205px] h-[92px] px-[16px] pt-[16px] pb-[24px] flex flex-col items-start justify-start gap-y-1 cursor-pointer rounded-[16px] hover:bg-[#FFF0E9]">

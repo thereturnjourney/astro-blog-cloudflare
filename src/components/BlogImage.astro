@@ -3,23 +3,29 @@ import Picture from 'astro/components/Picture.astro';
 import { Image } from 'astro:assets';
 import { imgIXurl } from '../middleware/api';
 
+// Define the expected type of the 'cover' prop
 interface Props {
-    cover: [];
+    cover: string;
 }
 
 const { cover } = Astro.props as Props;
-
 ---
 
-<div class="w-[100%]">
+<div class="w-full">
     <picture>
-        <source srcset={`${cover}?lossless=true&h=800&w=1300`} media="(min-width: 1024px)" />
-        <source srcset={`${cover}?lossless=true&h=1024&w=768`} media="(min-width: 768px)" />
+        <source 
+            srcset={`${cover}?lossless=true&h=800&w=1300`} 
+            media="(min-width: 1024px)" 
+        />
+        <source 
+            srcset={`${cover}?lossless=true&h=1024&w=768`} 
+            media="(min-width: 768px)" 
+        />
         <img
-            src={`${cover}?lossless=true&h=800&w=1300`}
-            alt="The Return Journey Blogs Home" 
-            loading='eager'
-            class="w-[100%] h-[327px]"
+            src={`${cover}?lossless=true`} 
+            alt="The Return Journey Blogs Home"
+            loading="eager"
+            class="w-full h-[330px] object-cover"
         />
     </picture>
 </div>

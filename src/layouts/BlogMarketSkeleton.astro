@@ -17,6 +17,7 @@ const blogsData = await fetchAllBlogs();
 
 <section class="grid grid-cols-1 tab:grid-cols-2 xl:grid-cols-3 gap-4 xl:gap-[20px]">
     {
+        blogsData &&
         blogsData.map(({ id, featuredBlog, blogTitle, minRead, author, date, creditsTo, description, bannerImage },idx)=>(
             <Blogcard 
                 client:visible
