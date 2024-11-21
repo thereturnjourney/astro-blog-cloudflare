@@ -5,7 +5,7 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet"
 
-import { truncateText } from "@/functions/helper"
+import { removeCookie, truncateText } from "@/functions/helper"
 import { imgIXurl } from "@/middleware/api"
 import { List } from "@phosphor-icons/react"
 
@@ -15,6 +15,16 @@ const BLOG_URL = import.meta.env.PUBLIC_BLOG_URL
 const NEW_DASHBOARD = import.meta.env.PUBLIC_NEW_DASHBOARD
 
 export default function NavSheet({getuserinfo}) {
+    const redirectTo = (url) => {
+		window.scrollTo(0, 0);
+		window.location.href = url;
+	} 
+    
+    
+	const handleLogout = () => {
+		removeCookie("trj_tid"); 
+		window.location.href  = `${TRJ_URL}/signin?to=${window.location.href}`
+	}
 
     return (
         <Sheet key={"left"}>
@@ -42,7 +52,7 @@ export default function NavSheet({getuserinfo}) {
                                     <p className="font-Inter font-medium text-[13px] leading-[18px] tracking-[-0.08px] secondary-text">@{truncateText(getuserinfo.socialUserModels[0].profileUsername,15)}</p>
                                 </div>
                             </div>
-                            <div onClick={()=>{window.location.href='https://www.thereturnjourney.com/account';window.scrollTo(0, 0)}} >
+                            <div onClick={()=> redirectTo(`${TRJ_URL}/account`)} >
                                 <img 
                                     src={`${imgIXurl}react-webapp/Account/edit.png?lossless=true&w=80&h=80`}
                                     alt="edit profile for signed in TRJ"
@@ -56,7 +66,7 @@ export default function NavSheet({getuserinfo}) {
                                 alt="profile not signed in TRJ"
                                 className="w-[32px] h-[32px]"
                             />
-                            <Button onClick={()=>{window.location.href='https://www.thereturnjourney.com/signin';window.scrollTo(0, 0)}} className="w-[258px] py-[8px] font-Syne font-semibold text-[16px] leading-[21px] tracking-[-0.32px]" >
+                            <Button onClick={handleLogout} className="w-[258px] py-[8px] font-Syne font-semibold text-[16px] leading-[21px] tracking-[-0.32px]" >
                                 Sign Up
                             </Button>
                         </div>
