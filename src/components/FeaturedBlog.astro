@@ -4,7 +4,7 @@ import { truncateText } from '../functions/helper';
 
 const { featuredBlogs } = Astro.props
 // Featured Blog Work
-const hasIdKey = 'id' in featuredBlogs;
+const hasIdKey = featuredBlogs && 'id' in featuredBlogs;
 
 import FeaturedBlogReadMore from '../components/Buttons/FeaturedBlogReadMore';
 

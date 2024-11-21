@@ -36,7 +36,7 @@ export default function Blogcard(props) {
                     alt="Blog The Return Journey Cover Picture" 
                     src={bannerImage[0]}
                     loading='lazy'
-                    className="rounded-t-[14px] h-[100%] w-[100%]"
+                    className="rounded-t-[14px] h-[100%] w-[100%] object-cover object-top"
                 />
             </div>
 
