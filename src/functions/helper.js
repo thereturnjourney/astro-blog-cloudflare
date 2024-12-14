@@ -72,5 +72,5 @@ export const getCookie = (name) =>  {
 }
 
 export const removeCookie = (name) =>  {
-    document.cookie = `${name}=; max-age=0; path=/;`;
+    document.cookie = `${name}=; max-age=0; path=/; domain=thereturnjourney.com;`;
 }
