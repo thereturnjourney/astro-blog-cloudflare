@@ -5,10 +5,9 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet"
 
-import { removeCookie, truncateText } from "@/functions/helper"
+import { getCookie, removeCookie, truncateText } from "@/functions/helper"
 import { imgIXurl } from "@/middleware/api"
 import { List } from "@phosphor-icons/react"
-
 
 const TRJ_URL = import.meta.env.PUBLIC_TRJ_URL
 const BLOG_URL = import.meta.env.PUBLIC_BLOG_URL
