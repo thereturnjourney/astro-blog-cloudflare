@@ -54,7 +54,9 @@ export default function Navbar() {
 
 	const handleLogout = () => {
 		removeCookie("trj_tid"); 
-		window.location.href  = `${TRJ_URL}/signin?to=${window.location.href}`
+		if(getCookie("trj_tid") === undefined) {
+			window.location.href  = `${TRJ_URL}/signin?to=${window.location.href}`
+		} 
 	}
 
 
@@ -185,7 +187,7 @@ export default function Navbar() {
 					}
 
 					{
-						getuserinfo &&
+						tokenID && getuserinfo &&
 						<DropdownMenu>
 							<DropdownMenuTrigger asChild>
 								<div className="relative w-[34px] h-[34px]">
