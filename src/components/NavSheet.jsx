@@ -5,25 +5,26 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet"
 
-import { removeCookie, truncateText } from "@/functions/helper"
+import { getCookie, removeCookie, truncateText } from "@/functions/helper"
 import { imgIXurl } from "@/middleware/api"
 import { List } from "@phosphor-icons/react"
-
 
 const TRJ_URL = import.meta.env.PUBLIC_TRJ_URL
 const BLOG_URL = import.meta.env.PUBLIC_BLOG_URL
 const NEW_DASHBOARD = import.meta.env.PUBLIC_NEW_DASHBOARD
 
 export default function NavSheet({getuserinfo}) {
+    const tokenID = getCookie("trj_tid");
     const redirectTo = (url) => {
 		window.scrollTo(0, 0);
 		window.location.href = url;
 	} 
     
-    
 	const handleLogout = () => {
 		removeCookie("trj_tid"); 
-		window.location.href  = `${TRJ_URL}/signin?to=${window.location.href}`
+        if(getCookie("trj_tid") === undefined) {
+            window.location.href  = `${TRJ_URL}/signin?to=${window.location.href}`
+        }
 	}
 
     return (
@@ -37,6 +38,7 @@ export default function NavSheet({getuserinfo}) {
             <SheetContent side={"left"} className="bg-white ">
                 <div className="flex flex-col items-start justify-start w-[100%]">
                     {   
+                        tokenID &&
                         getuserinfo &&
                         getuserinfo.id ?
 
