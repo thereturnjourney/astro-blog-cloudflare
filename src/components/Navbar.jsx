@@ -55,6 +55,7 @@ export default function Navbar() {
 	const handleLogout = () => {
 		removeCookie("trj_tid"); 
 		if(getCookie("trj_tid") === undefined) {
+			setuserinfo(null);
 			window.location.href  = `${TRJ_URL}/signin?to=${window.location.href}`
 		} 
 	}
