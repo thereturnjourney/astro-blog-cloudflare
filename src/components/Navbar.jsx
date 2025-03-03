@@ -295,7 +295,7 @@ export default function Navbar() {
 						selectedTab === 'Itinerary' ? 
 						<div ref={dropDownRef} className="w-[100%] h-[171px] bg-white absolute top-[110%] left-[0px] border-t-[#DADDE8] border border-b-transparent border-x-transparent xl:rounded-[16px]">
 							<div className="flex flex-row gap-x-[24px] px-[16px] pt-[16px]">
-								<div className="flex flex-col gap-y-1">
+								{/* <div className="flex flex-col gap-y-1">
 									<div onClick={() => redirectTo(`${TRJ_URL}/itinerary/occasion`)} className="w-[205px] h-[92px] px-[16px] pt-[16px] pb-[24px] flex flex-col items-start justify-start gap-y-1 cursor-pointer rounded-[16px] hover:bg-[#FFF0E9]">
 										<h2 className="pure-black font-Inter font-medium text-[15px] leading-[20px] tracking-[-0.24px]" >Craft New Itinerary</h2>
 										<p className="tertiary-black font-Inter font-normal text-[13px] leading-[18px] tracking-[-0.08px]">Create stunning itineraries<br/>acc. to your preferences</p>
@@ -304,7 +304,7 @@ export default function Navbar() {
 									<h3 className="success-text font-Inter font-medium text-[13px] leading-[18px] tracking-[-0.08px] ml-[16px] whitespace-nowrap">Himachal Pradesh</h3>
 								</div>
 								
-								<div className="w-[1px] h-[40px] bg-[#DADDE8] mt-[28px]" />
+								<div className="w-[1px] h-[40px] bg-[#DADDE8] mt-[28px]" /> */}
 
 								<div className="flex flex-col gap-y-1">
 									<div onClick={() => redirectTo(`${TRJ_URL}/enquiryform`)}  className="w-[205px] h-[92px] px-[16px] pt-[16px] pb-[24px] flex flex-col items-start justify-start gap-y-1 cursor-pointer rounded-[16px] hover:bg-[#FFF0E9]">
