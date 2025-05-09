@@ -8,13 +8,16 @@ import {
 import { getCookie, removeCookie, truncateText } from "@/functions/helper"
 import { imgIXurl } from "@/middleware/api"
 import { List } from "@phosphor-icons/react"
+import { useState } from "react"
+import SocialLogin from "./SocialLogin"
 
 const TRJ_URL = import.meta.env.PUBLIC_TRJ_URL
 const BLOG_URL = import.meta.env.PUBLIC_BLOG_URL
 const NEW_DASHBOARD = import.meta.env.PUBLIC_NEW_DASHBOARD
 
-export default function NavSheet({getuserinfo}) {
-    const tokenID = getCookie("trj_tid");
+export default function NavSheet({ getuserinfo, afterLogin }) {
+    const [token, setToken] = useState(getCookie("trj_tid"));
+
     const redirectTo = (url) => {
 		window.scrollTo(0, 0);
 		window.location.href = url;
@@ -23,9 +26,15 @@ export default function NavSheet({getuserinfo}) {
 	const handleLogout = () => {
 		removeCookie("trj_tid"); 
         if(getCookie("trj_tid") === undefined) {
-            window.location.href  = `${TRJ_URL}/signin?to=${window.location.href}`
+            setToken(undefined);
         }
 	}
+
+    const handleAfterLogin = (response) => {
+        afterLogin(response);
+    }
+
+    const userName = getuserinfo?.socialUserModels?.[0]?.profileUsername !== "" ? getuserinfo?.socialUserModels?.[0]?.profileUsername : getuserinfo.email;
 
     return (
         <Sheet key={"left"}>
@@ -38,40 +47,45 @@ export default function NavSheet({getuserinfo}) {
             <SheetContent side={"left"} className="bg-white ">
                 <div className="flex flex-col items-start justify-start w-[100%]">
                     {   
-                        tokenID &&
+                        token &&
                         getuserinfo &&
                         getuserinfo.id ?
-
                         <div className="w-[100%] flex flex-row items-center justify-between">
                             <div className="flex flex-row items-start justify-start gap-x-6">
                                 <img 
-                                    src={`${imgIXurl}react-webapp/Account/dummy-nav.png`}
+                                    src={`${imgIXurl}/react-webapp/Account/dummy-nav.png`}
                                     alt="profile not signed in TRJ"
                                     className="w-[48px] h-[48px] rounded-[6px]"
+                                    loading="lazy"
                                 />
                                 <div className="flex flex-col items-start justify-start gap-y-1">
-                                    <h3 className="font-Syne font-semibold text-[15px] leading-[18px] tracking-[-0.08px] text-black">{truncateText(getuserinfo.firstName,10)}</h3>
-                                    <p className="font-Inter font-medium text-[13px] leading-[18px] tracking-[-0.08px] secondary-text">@{truncateText(getuserinfo.socialUserModels[0].profileUsername,15)}</p>
+                                    <h3 className="font-Syne font-semibold text-[15px] leading-[18px] tracking-[-0.08px] text-black">{truncateText(`${getuserinfo.firstName} ${getuserinfo.lastName}`, 10)}</h3>
+                                    <p className="font-Inter font-medium text-[13px] leading-[18px] tracking-[-0.08px] secondary-text">@{truncateText(userName, 15)}</p>
                                 </div>
                             </div>
                             <div onClick={()=> redirectTo(`${TRJ_URL}/account`)} >
                                 <img 
-                                    src={`${imgIXurl}react-webapp/Account/edit.png?lossless=true&w=80&h=80`}
+                                    src={`${imgIXurl}/react-webapp/Account/edit.png?lossless=true&w=80&h=80`}
                                     alt="edit profile for signed in TRJ"
-                                    className="w-[20px] h-[20px] rounded-[6px]"
+                                    className="w-[20px] h-[20px] rounded-[6px] cursor-pointer"
+                                    loading="lazy"
                                 />
                             </div>
                         </div> :
-                        <div className="w-[100%] flex flex-row items-center justify-center gap-x-6">
-                            <img 
-                                src={`${imgIXurl}AstroJs/IconsPack/face.png`}
-                                alt="profile not signed in TRJ"
-                                className="w-[32px] h-[32px]"
-                            />
-                            <Button onClick={handleLogout} className="w-[258px] py-[8px] font-Syne font-semibold text-[16px] leading-[21px] tracking-[-0.32px]" >
-                                Sign Up
-                            </Button>
-                        </div>
+                        <SocialLogin
+                            afterLogin={handleAfterLogin}
+                        >
+                            <div className="w-[100%] flex flex-row items-center justify-center gap-x-6">
+                                <img 
+                                    src={`${imgIXurl}AstroJs/IconsPack/face.png`}
+                                    alt="profile not signed in TRJ"
+                                    className="w-[32px] h-[32px]"
+                                />
+                                <Button onClick={handleLogout} className="w-[258px] py-[8px] font-Syne font-semibold text-[16px] leading-[21px] tracking-[-0.32px]" >
+                                    Sign Up
+                                </Button>
+                            </div>
+                        </SocialLogin>
                         
                     }
                     

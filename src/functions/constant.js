@@ -1,0 +1,1 @@
+export const staticUrl = 'https://trj-assets.thereturnjourney.com';

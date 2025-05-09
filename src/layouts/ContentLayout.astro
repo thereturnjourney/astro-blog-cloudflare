@@ -21,7 +21,7 @@ import DrawerButton from "../components/Buttons/DrawerButton";
 
     <div class="w-[100%] mt-[24px]">
     {
-        section.map(({subTitle, details}, idx)=>{
+        section?.map(({subTitle, details}, idx)=>{
             return(
                 <div class="w-[100%] flex flex-col items-start justify-start pb-[32px]" >
                     <h2 class="font-Syne font-semibold xl:text-[24px] tab:text-[22px] text-[17px] leading-[20.4px] tab:leading-[24px] xl:leading-[28px] tracking-[-0.26px] tab:tracking-[0.38px] xl:tracking-[0.35px] night-black">{subTitle}</h2>
