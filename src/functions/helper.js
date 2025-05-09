@@ -18,9 +18,9 @@ export function slugify(text) {
       .replace(/-+$/, '');
   }
 
-export function extractSubtitles(blogContent) {
+export function extractSubtitles(blogContent = []) {
     const subtitles = [];
-    blogContent.forEach(section => {
+    blogContent?.forEach(section => {
         if (section.subTitle) {
             subtitles.push(section.subTitle);
         }
@@ -28,7 +28,7 @@ export function extractSubtitles(blogContent) {
     return subtitles;
 }
 
-export function renderDetails(details) {
+export function renderDetails(details = []) {
     let titleCount = 0;
 
     return details?.map(detail => {
@@ -36,7 +36,7 @@ export function renderDetails(details) {
             titleCount++;
             return `<h2 class="night-black font-Inter font-medium text-[13px] tab:text-[15px] leading-[18px] tab:leading-[20px] tracking-[-0.08px] tab:tracking-[-0.24px] mt-[16px] xl:mt-[24px]">${titleCount}. ${detail.detailTitle}</h2>`;
         } else if (detail.type === 'Paragraph') {
-            return detail.paragraph.map(text => `<p class="mt-2 tertiary-black font-Inter font-normal text-[13px] tab:text-[15px] leading-[18px] tab:leading-[25px] tracking-[-0.08px] tab:tracking-[-0.24px]">${text}</p>`).join('');
+            return detail.paragraph?.map(text => `<p class="mt-2 tertiary-black font-Inter font-normal text-[13px] tab:text-[15px] leading-[18px] tab:leading-[25px] tracking-[-0.08px] tab:tracking-[-0.24px]">${text}</p>`).join('');
         } else if (detail.type === 'Image') {
             // Determine the grid column classes based on the number of images
             const imagesLength = detail.images.length;
@@ -65,12 +65,16 @@ export function renderDetails(details) {
 }
 
 
-export const getCookie = (name) =>  {
+export const getCookie = (name) => {
 	const value = `; ${document.cookie}`;
 	const parts = value.split(`; ${name}=`);
 	if (parts.length === 2) return parts.pop().split(';').shift();
 }
 
-export const removeCookie = (name) =>  {
-    document.cookie = `${name}=; max-age=0; path=/; domain=thereturnjourney.com;`;
+export const removeCookie = (name) => {
+	const isLocalhost = window.location.hostname === 'localhost';
+	const domain = isLocalhost ? '' : 'domain=.thereturnjourney.com;';
+	const path = 'path=/;';
+	console.log(domain)
+	document.cookie = `${name}=; ${path} ${domain} max-age=0;`;
 }
