@@ -8,6 +8,7 @@ import { fetchUserInfo } from "@/middleware/user";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuTrigger } from "./ui/dropdown-menu";
 import CircularProgress from "./CircularProgress";
 import { getCookie, removeCookie } from "@/functions/helper";
+import SocialLogin from "./SocialLogin";
 
 const Routes = ["Itinerary", "Horizons"];
 const TRJ_URL = import.meta.env.PUBLIC_TRJ_URL
@@ -15,13 +16,14 @@ const BLOG_URL = import.meta.env.PUBLIC_BLOG_URL
 const NEW_DASHBOARD = import.meta.env.PUBLIC_NEW_DASHBOARD
 
 export default function Navbar() {
+	const dropDownRef = useRef(null);
+	const navBarRef = useRef(null);
+
 	const [selectedTab, setSelectedTab] = useState(null);
 	const [getuserinfo, setuserinfo] = useState(null);
 	const [userCompletion, setUserCompletion] = useState(0);
-	const [userFullName, setUserFullName] = useState("Himanshu Phalak")
-	const dropDownRef = useRef(null);
-	const navBarRef = useRef(null);
-	const tokenID = getCookie("trj_tid");
+	const [userFullName, setUserFullName] = useState("John Doe");
+	const [token, setToken] = useState(getCookie("trj_tid") ?? null);
 
 	const handleClickOutside = (event) => {
 		if (
@@ -35,9 +37,8 @@ export default function Navbar() {
 	};
 
 	async function getUserData() {
-		if(!tokenID) return;
-		const userInfo = await fetchUserInfo(tokenID);
-		
+		if(!token) return;
+		const userInfo = await fetchUserInfo(token);
 		if (userInfo) {
 			setuserinfo(userInfo)
 			setUserCompletion(userInfo.profileCount)
@@ -56,14 +57,17 @@ export default function Navbar() {
 		removeCookie("trj_tid"); 
 		if(getCookie("trj_tid") === undefined) {
 			setuserinfo(null);
-			window.location.href  = `${TRJ_URL}/signin?to=${window.location.href}`
+			setToken(null);
 		} 
 	}
 
+	const handleAfterLogin = (response) => {
+		setToken(response.token);
+	}
 
 	useEffect(()=>{
 		getUserData()
-	},[])
+	},[token])
 
 	useEffect(() => {
 		document.addEventListener('mousedown', handleClickOutside);
@@ -92,7 +96,10 @@ export default function Navbar() {
 						</div> */}
 						
 						<div className="xl:hidden block">
-							<NavSheet getuserinfo={getuserinfo} />
+							<NavSheet 
+								afterLogin={handleAfterLogin}
+								getuserinfo={getuserinfo} 
+							/>
 						</div>
 
 						<div className="cursor-pointer" onClick={() => redirectTo(NEW_DASHBOARD)}>
@@ -175,20 +182,24 @@ export default function Navbar() {
 
 
 					{
-						!getuserinfo && !tokenID &&
-						<a onClick={() => redirectTo(`${TRJ_URL}/signin?to=${window.location.href}`)} className="font-Syne font-semibold text-[16px] leading-[21px] tracking-[-0.32px] night-black cursor-pointer">
-							Sign In
-						</a>
+						!getuserinfo && !token &&
+						<SocialLogin
+							afterLogin={handleAfterLogin}
+						>
+							<span className="font-Syne font-semibold text-[16px] leading-[21px] tracking-[-0.32px] night-black cursor-pointer">
+								Sign In
+							</span>
+						</SocialLogin>
 					}
 
 					
 					{
-						!getuserinfo && tokenID &&
+						!getuserinfo && token &&
 						<span className="loader w-[30px] h-[30px]"></span>
 					}
 
 					{
-						tokenID && getuserinfo &&
+						token && getuserinfo &&
 						<DropdownMenu>
 							<DropdownMenuTrigger asChild>
 								<div className="relative w-[34px] h-[34px]">
