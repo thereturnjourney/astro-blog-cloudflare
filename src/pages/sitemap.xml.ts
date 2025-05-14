@@ -19,7 +19,7 @@ export async function GET({ request }) {
 
   const blogUrls = posts.map(({ id, blogTitle }) => `
     <url>
-      <loc>${baseUrl}/details/${id}/${blogTitle}</loc>
+      <loc>${baseUrl}/details/${id}/${encodeURIComponent(blogTitle)}</loc>
       <lastmod>${new Date().toISOString()}</lastmod>
       <priority>0.8</priority>
     </url>
