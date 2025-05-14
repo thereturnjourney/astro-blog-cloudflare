@@ -167,7 +167,7 @@ const SocialLogin = (props) => {
     const content = () => {
         return (
             <Fragment>
-                <div className="flex flex-col gap-[8px] items-center tab:h-[0px]">
+                <div className="flex flex-col gap-[8px] items-center tab:h-[0px] mt-[24px] tab:mt-0">
                     <h1 className="font-Manrope font-semibold text-[#454955] tab:text-[#1D1F24] text-[14px] leading-[100%] tracking-[0.4] tab:text-[32px] tab:tracking-[-0.3px]">
                         Unlock the Full Journey
                     </h1>
@@ -222,11 +222,7 @@ const SocialLogin = (props) => {
                     { props.children }
                 </DrawerTrigger>
 
-                <DrawerContent side={"bottom"} className="h-[300px] bg-[#FFF] surface-brand-neutral-5 border-none px-0 pt-0 pb-3">
-                    <div className='flex flex-row items-center justify-center w-[100%] pb-4 mt-[-8px]' >
-                        <div className='w-[32px] h-[4px] rounded-[4px] bg-[#DADDE8]' />
-                    </div>
-                    
+                <DrawerContent side={"bottom"} className="h-[300px] bg-[#FFF] surface-brand-neutral-5 border-none px-0 pt-0 pb-3 outline-none">
                     {
                         content()
                     }
