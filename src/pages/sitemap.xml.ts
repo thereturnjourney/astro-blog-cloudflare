@@ -1,10 +1,23 @@
 import { fetchAllBlogs } from "@/middleware/fetchBlogs";
 
-export async function get({ request }) {
+export async function GET({ request }) {
   const posts = await fetchAllBlogs();
   const baseUrl = 'https://blogs.thereturnjourney.com';
 
-  const urls = posts.map(({ id, blogTitle}) => `
+  const staticRoutes = [
+    '/',
+    '/post',
+  ];
+
+  const staticUrls = `
+    <url>
+      <loc>${baseUrl}</loc>
+      <lastmod>${new Date().toISOString()}</lastmod>
+      <priority>1.0</priority>
+    </url>
+  `
+
+  const blogUrls = posts.map(({ id, blogTitle }) => `
     <url>
       <loc>${baseUrl}/details/${id}/${blogTitle}</loc>
       <lastmod>${new Date().toISOString()}</lastmod>
@@ -13,14 +26,10 @@ export async function get({ request }) {
   `).join('');
 
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
-                <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-                <url>
-                    <loc>${baseUrl}/</loc>
-                    <lastmod>${new Date().toISOString()}</lastmod>
-                    <priority>1.0</priority>
-                </url>
-                ${urls}
-                </urlset>`;
+    <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+      ${staticUrls}
+      ${blogUrls}
+    </urlset>`;
 
   return new Response(xml, {
     headers: {
