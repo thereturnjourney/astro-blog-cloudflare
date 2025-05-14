@@ -171,7 +171,7 @@ const SocialLogin = (props) => {
                     <h1 className="font-Manrope font-semibold text-[#454955] tab:text-[#1D1F24] text-[14px] leading-[100%] tracking-[0.4] tab:text-[32px] tab:tracking-[-0.3px]">
                         Unlock the Full Journey
                     </h1>
-                    <p className="px-[26px] font-Manrope font-semibold tab:font-Inter tab:font-normal text-[#1D1F24] tab:text-[#454955] text-[17px] tab:text-[21px] leading-[100%] tracking-[0.1px] tab:tracking-[-0.2px]">
+                    <p className="text-center px-[26px] font-Manrope font-semibold tab:font-Inter tab:font-normal text-[#1D1F24] tab:text-[#454955] text-[17px] tab:text-[21px] leading-[100%] tracking-[0.1px] tab:tracking-[-0.2px]">
                         Sign in to unlock tailored trips, hidden gems, and exclusive travel perks — all curated just for you
                     </p>
                 </div>
@@ -194,7 +194,7 @@ const SocialLogin = (props) => {
                     </div>
                 </div>
                 <div className="rounded-b-[16px] flex items-center justify-center absolute left-0 bottom-0 w-[100%] h-[94px] tab:h-[81px] bg-[#FBFCFD] px-[48px]">
-                    <p className="font-Inter font-normal text-[#454955] text-[14px] tab:text-[17px] leading-[100%] tracking-[0.4px] tab:tracking-[0.1px]">
+                    <p className="text-center font-Inter font-normal text-[#454955] text-[14px] tab:text-[17px] leading-[100%] tracking-[0.4px] tab:tracking-[0.1px]">
                         By continuing, you agree to our <a href={"/privacypolicy"} className="text-[#0094FF] cursor-pointer hover:opacity-75">Privacy Policies</a> and <a href={"/seg-terms"} className="text-[#0094FF] cursor-pointer hover:opacity-75">Terms of Service</a>
                     </p>
                 </div>
