@@ -329,7 +329,7 @@ export default function Navbar() {
 								<div className="w-[1px] h-[40px] bg-[#DADDE8] mt-[28px]" />
 
 								<div className="flex flex-col gap-y-1">
-									<div onClick={() => redirectTo(`${TRJ_URL}/itineraryDashboard/upcomingItineraries`)} className="w-[205px] h-[92px] px-[16px] pt-[16px] pb-[24px] flex flex-col items-start justify-start gap-y-1 cursor-pointer rounded-[16px] hover:bg-[#FFF0E9]">
+									<div onClick={() => redirectTo(`${TRJ_URL}/booking-dashboard?type=upcoming`)} className="w-[205px] h-[92px] px-[16px] pt-[16px] pb-[24px] flex flex-col items-start justify-start gap-y-1 cursor-pointer rounded-[16px] hover:bg-[#FFF0E9]">
 										<h2 className="pure-black font-Inter font-medium text-[15px] leading-[20px] tracking-[-0.24px]" >Upcoming Itineraries</h2>
 										<p className="tertiary-black font-Inter font-normal text-[13px] leading-[18px] tracking-[-0.08px]">Buckle up, your favourite<br/>adventures are nearing!</p>
 									</div>
@@ -338,8 +338,8 @@ export default function Navbar() {
 								<div className="w-[1px] h-[40px] bg-[#DADDE8] mt-[28px]" />
 
 								<div className="flex flex-col gap-y-1">
-									<div onClick={() => redirectTo(`${TRJ_URL}/itineraryDashboard/itineraryDashboard/drafts`)}  className="w-[205px] h-[92px] px-[16px] pt-[16px] pb-[24px] flex flex-col items-start justify-start gap-y-1 cursor-pointer rounded-[16px] hover:bg-[#FFF0E9]">
-										<h2 className="pure-black font-Inter font-medium text-[15px] leading-[20px] tracking-[-0.24px]" >Drafts</h2>
+									<div onClick={() => redirectTo(`${TRJ_URL}/booking-dashboard?type=processing`)}  className="w-[205px] h-[92px] px-[16px] pt-[16px] pb-[24px] flex flex-col items-start justify-start gap-y-1 cursor-pointer rounded-[16px] hover:bg-[#FFF0E9]">
+										<h2 className="pure-black font-Inter font-medium text-[15px] leading-[20px] tracking-[-0.24px]" >Processing Itineraries</h2>
 										<p className="tertiary-black font-Inter font-normal text-[13px] leading-[18px] tracking-[-0.08px]">Customise what you’ve <br/>already created</p>
 									</div>
 								</div>
@@ -347,7 +347,7 @@ export default function Navbar() {
 								<div className="w-[1px] h-[40px] bg-[#DADDE8] mt-[28px]" />
 
 								<div className="flex flex-col gap-y-1">
-									<div onClick={() => redirectTo(`${TRJ_URL}/itineraryDashboard/completedTrips`)}  className="w-[205px] h-[92px] px-[16px] pt-[16px] pb-[24px] flex flex-col items-start justify-start gap-y-1 cursor-pointer rounded-[16px] hover:bg-[#FFF0E9]">
+									<div onClick={() => redirectTo(`${TRJ_URL}/booking-dashboard?type=completed`)}  className="w-[205px] h-[92px] px-[16px] pt-[16px] pb-[24px] flex flex-col items-start justify-start gap-y-1 cursor-pointer rounded-[16px] hover:bg-[#FFF0E9]">
 										<h2 className="pure-black font-Inter font-medium text-[15px] leading-[20px] tracking-[-0.24px]" >Completed Trips</h2>
 										<p className="tertiary-black font-Inter font-normal text-[13px] leading-[18px] tracking-[-0.08px]">Storehouse of all your<br/>superb memories!</p>
 									</div>
