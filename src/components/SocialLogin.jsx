@@ -167,11 +167,11 @@ const SocialLogin = (props) => {
     const content = () => {
         return (
             <Fragment>
-                <div className="flex flex-col gap-[8px] items-center tab:h-[0px]">
+                <div className="flex flex-col gap-[8px] items-center tab:h-[0px] mt-[24px] tab:mt-0">
                     <h1 className="font-Manrope font-semibold text-[#454955] tab:text-[#1D1F24] text-[14px] leading-[100%] tracking-[0.4] tab:text-[32px] tab:tracking-[-0.3px]">
                         Unlock the Full Journey
                     </h1>
-                    <p className="px-[26px] font-Manrope font-semibold tab:font-Inter tab:font-normal text-[#1D1F24] tab:text-[#454955] text-[17px] tab:text-[21px] leading-[100%] tracking-[0.1px] tab:tracking-[-0.2px]">
+                    <p className="text-center px-[26px] font-Manrope font-semibold tab:font-Inter tab:font-normal text-[#1D1F24] tab:text-[#454955] text-[17px] tab:text-[21px] leading-[100%] tracking-[0.1px] tab:tracking-[-0.2px]">
                         Sign in to unlock tailored trips, hidden gems, and exclusive travel perks — all curated just for you
                     </p>
                 </div>
@@ -194,7 +194,7 @@ const SocialLogin = (props) => {
                     </div>
                 </div>
                 <div className="rounded-b-[16px] flex items-center justify-center absolute left-0 bottom-0 w-[100%] h-[94px] tab:h-[81px] bg-[#FBFCFD] px-[48px]">
-                    <p className="font-Inter font-normal text-[#454955] text-[14px] tab:text-[17px] leading-[100%] tracking-[0.4px] tab:tracking-[0.1px]">
+                    <p className="text-center font-Inter font-normal text-[#454955] text-[14px] tab:text-[17px] leading-[100%] tracking-[0.4px] tab:tracking-[0.1px]">
                         By continuing, you agree to our <a href={"/privacypolicy"} className="text-[#0094FF] cursor-pointer hover:opacity-75">Privacy Policies</a> and <a href={"/seg-terms"} className="text-[#0094FF] cursor-pointer hover:opacity-75">Terms of Service</a>
                     </p>
                 </div>
@@ -222,11 +222,7 @@ const SocialLogin = (props) => {
                     { props.children }
                 </DrawerTrigger>
 
-                <DrawerContent side={"bottom"} className="h-[300px] bg-[#FFF] surface-brand-neutral-5 border-none px-0 pt-0 pb-3">
-                    <div className='flex flex-row items-center justify-center w-[100%] pb-4 mt-[-8px]' >
-                        <div className='w-[32px] h-[4px] rounded-[4px] bg-[#DADDE8]' />
-                    </div>
-                    
+                <DrawerContent side={"bottom"} className="h-[300px] bg-[#FFF] surface-brand-neutral-5 border-none px-0 pt-0 pb-3 outline-none">
                     {
                         content()
                     }

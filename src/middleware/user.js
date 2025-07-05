@@ -1,3 +1,5 @@
+import { removeCookie } from "@/functions/helper";
+
 const TRJ_API_URL = import.meta.env.PUBLIC_TRJ_API_URL
 
 // Assuming `API_URL` is an environment variable defined in Cloudflare Workers or your Astro project
@@ -14,10 +16,14 @@ export async function fetchUserInfo(tokenID, env) {
         if (!response.ok) {
             throw new Error('Network response was not ok');
         }
+        if(response.status === 401) {
+            removeCookie("trj_tid");
+        }
         const data = await response.json();
         return data;
     } catch (error) {
         console.error('Failed to fetch user info:', error);
+        removeCookie("trj_tid")
         return null;
     }
 }
